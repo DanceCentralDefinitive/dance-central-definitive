@@ -34,11 +34,11 @@ jobs:
 
       - name: Prepare patch archive
         run: |
-          test -f out/patch_xbox.hdr
-          test -f out/patch_xbox_0.ark
+          test -f out/gen/patch_xbox.hdr
+          test -f out/gen/patch_xbox_0.ark
           test -f out/deluxe.xex
           ARCHIVE_NAME="dance-central-definitive-patches-${GITHUB_REF_NAME}.zip"
-          zip -j "$ARCHIVE_NAME" out/patch_xbox.hdr out/patch_xbox_0.ark out/deluxe.xex
+          zip -j "$ARCHIVE_NAME" out/gen/patch_xbox.hdr out/gen/patch_xbox_0.ark out/deluxe.xex
           echo "ARCHIVE_NAME=$ARCHIVE_NAME" >> "$GITHUB_ENV"
 
       - name: Publish GitHub Release
