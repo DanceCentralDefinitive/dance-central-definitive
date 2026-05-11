@@ -1,3 +1,11 @@
+{new HamScreen
+   dx_info_screen
+   (panels meta background_confirmation_panel dialog_panel)
+   (focus dialog_panel)
+   (enter {dialog_panel set_ok "Dance Central 3 Definitive - Repository: https://github.com/DanceCentralDefinitive/dance-central-definitive - Docs: https://dancecentraldefinitive.github.io/dance-central-definitive/ - Authors: noqenji, liningdesert753, NORXND, Special Thanks to MiloHax" FALSE})
+   (NAV_SELECT_MSG {ui goto_screen dx_options_panel})
+}
+
 {new OptionsPanel
    dx_options_panel
    (file "../ui/options/options.milo")
@@ -37,7 +45,7 @@
             {ui goto_screen dx_autoplay_screen}
          )
          ("Info"
-            {}
+            {ui goto_screen dx_info_screen}
          )
       }
    )

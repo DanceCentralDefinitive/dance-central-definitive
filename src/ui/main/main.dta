@@ -57,7 +57,7 @@
    (poll SLIDE_RIGHT_LIST_ITEM)
    (NAV_SELECT_MSG
       {switch $name
-         ("Deluxe Options"
+         ("Definitive Options"
             {ui goto_screen dx_options_screen}
          )
          (gameplay

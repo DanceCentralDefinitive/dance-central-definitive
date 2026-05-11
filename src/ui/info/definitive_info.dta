@@ -1,0 +1,7 @@
+{new HamScreen
+   definitive_info_screen
+   (panels meta background_confirmation_panel dialog_panel)
+   (focus dialog_panel)
+   (enter {dialog_panel set_ok "Definitive Options — Info screen." FALSE})
+   (NAV_SELECT_MSG {ui goto_screen main_screen})
+}
