@@ -24,6 +24,11 @@ jobs:
       - name: Ensure build tools are executable
         run: chmod +x scripts/build.sh tools/linux/*
 
+      - name: Stamp build version for tag release
+        run: |
+          SHORT_COMMIT_HASH="$(git rev-parse --short HEAD)"
+          printf '"Build: Definitive %s (commit: %s base: 121004)"\n' "$GITHUB_REF_NAME" "$SHORT_COMMIT_HASH" > src/config/ham_version.dta
+
       - name: Build deluxe non-debug patch files
         run: scripts/build.sh --clean
 
