@@ -1,0 +1,21 @@
+; Consts
+
+#define DX_AUTOSCORE_BAD (0)
+#define DX_AUTOSCORE_ALMOST (0.5)
+#define DX_AUTOSCORE_OK (0.7)
+#define DX_AUTOSCORE_FLAWLESS (0.9)
+#define DX_AUTOSCORE_PERFECT (1)
+
+{set $dx_autoscore_p1 FALSE}
+{set $dx_autoscore_p1_frac DX_AUTOSCORE_BAD}
+
+{set $dx_autoscore_p2 FALSE}
+{set $dx_autoscore_p2_frac DX_AUTOSCORE_BAD}
+
+{set $dx_options_target_player 0}
+
+; Screens
+#include autoplay_panel.dta
+#include autoplay_diff_mode.dta
+
+{print "[dx-init]: cheats/autoplay: screens created"}

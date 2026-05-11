@@ -1,0 +1,43 @@
+name: release-patches
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ensure build tools are executable
+        run: chmod +x scripts/build.sh tools/linux/*
+
+      - name: Build deluxe non-debug patch files
+        run: scripts/build.sh --clean
+
+      - name: Prepare patch archive
+        run: |
+          test -f out/patch_xbox.hdr
+          test -f out/patch_xbox_0.ark
+          test -f out/deluxe.xex
+          ARCHIVE_NAME="dance-central-definitive-patches-${GITHUB_REF_NAME}.zip"
+          zip -j "$ARCHIVE_NAME" out/patch_xbox.hdr out/patch_xbox_0.ark out/deluxe.xex
+          echo "ARCHIVE_NAME=$ARCHIVE_NAME" >> "$GITHUB_ENV"
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ env.ARCHIVE_NAME }}
+          generate_release_notes: true

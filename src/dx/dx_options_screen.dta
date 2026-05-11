@@ -1,0 +1,95 @@
+{new OptionsPanel
+   dx_options_panel
+   (file "../ui/options/options.milo")
+   (focus right_hand.hnl)
+   (focus_index 0)
+   (pending_show_keyboard FALSE)
+   (pending_purchase_offer FALSE)
+   (offer_string "")
+   (top_index 0)
+   (back_token back)
+   (back_screen options_screen)
+   (enter
+      {platform_mgr add_sink $this (ui_changed)}
+      {set [pending_show_keyboard] FALSE}
+      {set [pending_purchase_offer] FALSE}
+      {set [offer_string] ""}
+      {if {! {$this exists dx_options_panel_provider.hnp}}
+         {new HamNavProvider dx_options_panel_provider.hnp}
+      }
+      {dx_options_panel_provider.hnp append_nav_item}
+      {dx_options_panel_provider.hnp append_nav_item}
+      {dx_options_panel_provider.hnp append_nav_item}
+      {dx_options_panel_provider.hnp set_label 0 "Autoplay"}
+      {dx_options_panel_provider.hnp set_label 1 "Info"}
+      {right_hand.hnl set_provider dx_options_panel_provider.hnp}
+      {right_hand.hnl scroll_to_index [focus_index] [top_index]}
+   )
+   (exit
+      {platform_mgr remove_sink $this ui_changed}
+      {set [top_index] {right_hand.hnl get_top_index}}
+   )
+   SELECT_RIGHT_LIST_TOKEN
+   (poll SLIDE_RIGHT_LIST_ITEM)
+   (NAV_SELECT_MSG
+      {switch $name
+         ("Autoplay"
+            {ui goto_screen dx_autoplay_screen}
+         )
+         ("Info"
+            {}
+         )
+      }
+   )
+   (NAV_HIGHLIGHT_MSG
+      {switch $component
+         (right_hand.hnl {set [focus_index] $index})
+      }
+   )
+   (BUTTON_DOWN_MSG
+      {switch $action
+         (
+            (kAction_Cancel)
+            {$this on_back}
+         )
+         kDataUnhandled
+      }
+   )
+   (on_back
+      {saveload_mgr autosave}
+      {ui goto_screen [back_screen]}
+   )
+   (controller_req_op_complete
+      ($success)
+      {if {== $success TRUE}
+         {shell_input set_last_select_in_controller_mode TRUE}
+         {if_else {platform_mgr is_guide_showing}
+            {set [pending_show_keyboard] TRUE}
+            {$this show_keyboard}
+         }
+      }
+   )
+}
+
+{new HamScreen
+   dx_options_screen
+   (panels meta background_panel dx_options_panel)
+   (focus dx_options_panel)
+   (back options_screen)
+   (handle_global_commands TRUE)
+   (enter {voice_input_panel activate_voice_context dx_options_screen})
+   (on_voice_command
+      ($command)
+      {switch $command
+         BACRO
+         {dx_options_panel select_right_list_token $command}
+      }
+   )
+   (on_global_voice_command
+      ($command)
+      {switch $command
+         (hidden_global_options)
+         {on_global_voice_command $command}
+      }
+   )
+}

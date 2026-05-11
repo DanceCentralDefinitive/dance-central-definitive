@@ -1,0 +1,3 @@
+{func dx_concat_syllables ($time $syl)
+   {set $buf "<alt>"}
+}

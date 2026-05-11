@@ -1,0 +1,50 @@
+name: validate-dta
+
+on:
+  push:
+    paths:
+      - src/**
+      - .dtacheckfns
+      - scripts/build.sh
+      - tools/build.py
+      - tools/linux/**
+
+permissions:
+  contents: read
+
+jobs:
+  validate-build-data:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ensure build tools are executable
+        run: chmod +x scripts/build.sh tools/linux/*
+
+      - name: Validate build data
+        run: |
+          set -o pipefail
+          scripts/build.sh --clean 2>&1 | tee build.log
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          import sys
+
+          log_text = Path('build.log').read_text(encoding='utf-8', errors='replace')
+          warning_pattern = re.compile(r'^(?:warning|WARN)\s*:', re.IGNORECASE | re.MULTILINE)
+
+          matches = warning_pattern.findall(log_text)
+          if matches:
+              print(f'Build produced {len(matches)} warning line(s); failing validation.')
+              sys.exit(1)
+
+          print('No warning lines found in build output.')
+          PY

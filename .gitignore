@@ -1,0 +1,45 @@
+# Python stuff
+__pycache__/
+*.pyc
+.venv/
+
+# Deluxe Ninja build files
+
+.DS_Store
+*.pyc
+*.tmp
+*.ninja
+.ninja_log
+
+# Output stuff
+
+main_xbox
+patch_xbox
+project_files
+magick
+_xenia
+
+# Stock things
+
+main_xbox_9.ark
+main_xbox_8.ark
+main_xbox_7.ark
+main_xbox_6.ark
+main_xbox_5.ark
+main_xbox_4.ark
+main_xbox_3.ark
+main_xbox_2.ark
+main_xbox_1.ark
+main_xbox_0.ark
+main_xbox.hdr
+patch_xbox_0.ark
+patch_xbox.hdr
+
+dx.dta
+
+# More stuff
+
+obj
+out
+orig
+xenia

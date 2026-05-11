@@ -1,0 +1,37 @@
+{
+	"name": "dataarray",
+	"displayName": "DataArray",
+	"description": "",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.96.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"contributes": {
+		"languages": [
+			{
+				"id": "dataarray",
+				"aliases": [
+					"DataArray",
+					"dataarray"
+				],
+				"extensions": [
+					".dta"
+				],
+				"configuration": "./language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "dataarray",
+				"scopeName": "source.dataarray",
+				"path": "./syntaxes/dataarray.tmLanguage.json"
+			}
+		]
+	},
+	"__metadata": {
+		"size": 6256
+	}
+}

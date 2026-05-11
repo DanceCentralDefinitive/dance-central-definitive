@@ -1,0 +1,212 @@
+{new MainMenuPanel
+   main_panel
+   (file "main.milo")
+   (focus right_hand.hnl)
+   (back_token screen_name_title)
+   (tertiary_token options)
+   (allow_voice_control TRUE)
+   (enter
+      {platform_mgr add_sink $this (connection_status_changed)}
+      {hamprovider add_sink $this (on_ui_nav_player_change) 0 FALSE}
+      {profile_mgr add_sink $this (profile_changed_msg) 0 FALSE}
+      {hamprovider set ui_nav_mode shell}
+      {profile_mgr clear_critical_profile}
+      {meta music_start}
+      {song_offer_provider stop_preview}
+      {challenge_provider stop_preview}
+      {achievements set_allow_achievements TRUE}
+      {song_offer_provider clear_saved_highlight}
+      {challenge_provider clear_saved_highlight}
+      {gamemode set_mode init}
+      {$this motd_setup motd.lbl}
+      {$this update_icon_state none}
+      {content_mgr start_refresh}
+      {hamprovider set voice_commander_tip_lower FALSE}
+      {if {challenges can_download_player_challenges}
+         {challenges download_player_challenges}
+      }
+      {if {! {$this exists dx_main_menu_provider.hnp}}
+         {new HamNavProvider dx_main_menu_provider.hnp}
+      }
+
+      ; Nav list items
+      {dx_main_menu_provider.hnp append_nav_item}
+      {dx_main_menu_provider.hnp set_label 0 gameplay}
+
+      {dx_main_menu_provider.hnp append_nav_item}
+      {dx_main_menu_provider.hnp set_label 1 campaign_mode}
+
+      {dx_main_menu_provider.hnp append_nav_item}
+      {dx_main_menu_provider.hnp set_label 2 fitness_mode}
+
+      {dx_main_menu_provider.hnp append_nav_item}
+      {dx_main_menu_provider.hnp set_label 3 "Download More Songs"}
+
+      {$this update_main_menu_provider dx_main_menu_provider.hnp}
+      {right_hand.hnl set_provider {$this get_main_menu_provider}}
+      {hamprovider set is_in_shell_pause FALSE}
+      {hamprovider set is_in_campaign_mode FALSE}
+      {$this download_motd_art}
+   )
+   (exit
+      {platform_mgr remove_sink $this connection_status_changed}
+      {hamprovider remove_sink $this on_ui_nav_player_change}
+      {profile_mgr remove_sink $this profile_changed_msg}
+   )
+   SELECT_RIGHT_LIST_TOKEN
+   (poll SLIDE_RIGHT_LIST_ITEM)
+   (NAV_SELECT_MSG
+      {switch $name
+         ("Deluxe Options"
+            {ui goto_screen dx_options_screen}
+         )
+         (gameplay
+            {gamemode set_mode init}
+            {ui goto_screen choose_mode_screen}
+         )
+         (campaign_mode
+            {hamprovider set is_in_infinite_party_mode FALSE}
+            {ui goto_screen campaign_choose_profile_screen}
+         )
+         (fitness_mode
+            {gamemode set_mode infinite_playlist_perform}
+            {if_else {! {profile_mgr has_seen_tutorial kTutorialFitness}}
+               {enter_tutorial tutorial_fitness_screen_0 FALSE}
+               {ui goto_screen fitness_screen}
+            }
+         )
+         ("Download More Songs"
+            {ui goto_screen dx_download_songs_placeholder_screen}
+         )
+         (options {ui goto_screen options_screen})
+         (screen_name_title {ui go_back_screen {{ui current_screen} get back}})
+         (back {ui go_back_screen {{ui current_screen} get back}})
+      }
+   )
+   (motd_loaded
+      {$this motd_setup motd.lbl}
+      {$this download_motd_art}
+   )
+   (all_challenges_updated
+      ($has_new_challenges)
+      {right_hand.hnl refresh}
+   )
+   (on_ui_nav_player_change
+      {$this motd_setup motd.lbl}
+      {$this update_icon_state none}
+      {right_hand.hnl refresh}
+   )
+   (profile_changed_msg
+      {if {$this is_up}
+         {if_else {challenges need_to_resync_challenges}
+            {challenges download_player_challenges}
+            {right_hand.hnl refresh}
+         }
+         {$this motd_setup motd.lbl}
+         {$this update_icon_state none}
+      }
+   )
+   (content_refresh_done {$this motd_setup motd.lbl})
+   (dlc_image_loaded
+      {if {$this is_up}
+         {do
+            ($mat {$this find dlc.mat})
+            ($tex {$this dlc_image})
+            {$mat set diffuse_tex $tex}
+         }
+      }
+   )
+   (utility_image_loaded
+      {if {$this is_up}
+         {do
+            ($mat {$this find utility.mat})
+            ($tex {$this utility_image})
+            {$mat set diffuse_tex $tex}
+         }
+      }
+   )
+}
+{new HamPanel
+   main_menu_wait_for_content_panel
+   (load {content_loading_panel allowed_to_show TRUE})
+   (is_loaded {content_mgr refresh_done})
+   (finish_load {content_loading_panel allowed_to_show FALSE})
+}
+{new HamScreen
+   main_screen
+   (panels meta background_panel main_panel main_menu_wait_for_content_panel)
+   (focus main_panel)
+   (back title_screen)
+   (handle_global_commands TRUE)
+   (enter {voice_input_panel activate_voice_context main_screen})
+   (curr_list_highlight 0)
+   (TRANSITION_COMPLETE_MSG
+      {profile_mgr purge_old_data}
+      {if
+         {&&
+            {! {ui_event_mgr has_active_transition_event}}
+            {! {ui in_transition}}
+            {== {ui current_screen} $this}
+         }
+         {saveload_mgr autosave}
+      }
+      kDataUnhandled
+   )
+   (on_voice_command
+      ($command)
+      {switch $command
+         (options {helpbar select_left_list_item 0})
+         (screen_name_title {helpbar select_left_list_item 1})
+         BACRO
+         {main_panel select_right_list_token $command}
+      }
+   )
+   (on_global_voice_command
+      ($command)
+      {switch $command
+         (hidden_global_main)
+         (hidden_global_options {$this on_voice_command options})
+         {on_global_voice_command $command}
+      }
+   )
+}
+{new MoviePanel
+   attract_movie_panel
+   (preload FALSE)
+   (loop FALSE)
+   (audio TRUE)
+   (videos attract)
+   (movie_done
+      {if {== {ui current_screen} attract_screen}
+         {ui goto_screen {{ui current_screen} get next_screen}}
+      }
+   )
+}
+{new HamScreen
+   attract_screen
+   (panels attract_movie_panel movie_overlay_panel)
+   (focus movie_overlay_panel)
+   (next_screen autosave_warning_screen)
+   (skip_selected {ui goto_screen autosave_warning_screen})
+}
+{new HamScreen
+   show_offers_need_to_sign_in_screen
+   (panels meta background_confirmation_panel dialog_panel)
+   (focus dialog_panel)
+   (enter {dialog_panel set_ok show_offers_need_to_sign_in FALSE})
+   (NAV_SELECT_MSG {ui goto_screen main_screen})
+}
+{new HamScreen
+   challenges_need_to_sign_in_screen
+   (panels meta background_confirmation_panel dialog_panel)
+   (focus dialog_panel)
+   (enter {dialog_panel set_ok challenge_need_to_sign_in TRUE})
+   (NAV_SELECT_MSG {ui goto_screen main_screen})
+}
+{new HamScreen
+   server_not_available_screen
+   (panels meta background_confirmation_panel dialog_panel)
+   (focus dialog_panel)
+   (enter {dialog_panel set_ok store_error_store_server FALSE})
+   (NAV_SELECT_MSG {ui goto_screen main_screen})
+}

@@ -1,0 +1,187 @@
+{new OptionsPanel
+   dx_autoplay_diff_panel
+   (file "../../../ui/options/options.milo")
+   (focus right_hand.hnl)
+   (focus_index 0)
+   (pending_show_keyboard FALSE)
+   (pending_purchase_offer FALSE)
+   (offer_string "")
+   (top_index 0)
+   (back_token back)
+   (back_screen dx_autoplay_screen)
+   (dx_target_player 0)
+   (enter
+      {platform_mgr add_sink $this (ui_changed)}
+      {set [pending_show_keyboard] FALSE}
+      {set [pending_purchase_offer] FALSE}
+      {set [offer_string] ""}
+      {if {! {$this exists dx_autoplay_diff_panel_provider.hnp}}
+         {new HamNavProvider dx_autoplay_diff_panel_provider.hnp}
+      }
+      {dx_autoplay_diff_panel_provider.hnp append_nav_item}
+      {dx_autoplay_diff_panel_provider.hnp append_nav_item}
+      {dx_autoplay_diff_panel_provider.hnp append_nav_item}
+      {dx_autoplay_diff_panel_provider.hnp append_nav_item}
+      {dx_autoplay_diff_panel_provider.hnp append_nav_item}
+      {dx_autoplay_diff_panel_provider.hnp append_nav_item}
+      {dx_autoplay_diff_panel_provider.hnp set_label 0 "Disable"}
+      {dx_autoplay_diff_panel_provider.hnp set_label 1 "Bad"}
+      {dx_autoplay_diff_panel_provider.hnp set_label 2 "Almost"}
+      {dx_autoplay_diff_panel_provider.hnp set_label 3 "OK"}
+      {dx_autoplay_diff_panel_provider.hnp set_label 4 "Flawless"}
+      {dx_autoplay_diff_panel_provider.hnp set_label 5 "Perfect"}
+      {right_hand.hnl set_provider dx_autoplay_diff_panel_provider.hnp}
+      {right_hand.hnl scroll_to_index [focus_index] [top_index]}
+   )
+   (exit
+      {platform_mgr remove_sink $this ui_changed}
+      {set [top_index] {right_hand.hnl get_top_index}}
+   )
+   SELECT_RIGHT_LIST_TOKEN
+   (poll SLIDE_RIGHT_LIST_ITEM)
+   (NAV_SELECT_MSG
+      {switch $name
+         ("Disable"
+            {switch $dx_options_target_player
+               (1 {do
+                  {set $dx_autoscore_p1 FALSE}
+                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_BAD}
+                  {{gamedata getp 0 provider} set join_state kJoinNoSkeleton}
+               })
+               (2 {do
+                  {set $dx_autoscore_p2 FALSE}
+                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_BAD}
+                  {{gamedata getp 1 provider} set join_state kJoinNoSkeleton}
+               }) 
+            }
+            {ui goto_screen dx_autoplay_screen}
+         )
+         ("Bad"
+            {switch $dx_options_target_player
+               (1 {do
+                  {set $dx_autoscore_p1 TRUE}
+                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_BAD}
+                  {{gamedata getp 0 provider} set join_state kJoinPlaying}
+               })
+               (2 {do
+                  {set $dx_autoscore_p2 TRUE}
+                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_BAD}
+                  {{gamedata getp 1 provider} set join_state kJoinPlaying}
+               }) 
+            }
+            {ui goto_screen dx_autoplay_screen}
+         )
+         ("Almost"
+            {switch $dx_options_target_player
+               (1 {do
+                  {set $dx_autoscore_p1 TRUE}
+                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_ALMOST}
+                  {{gamedata getp 0 provider} set join_state kJoinPlaying}
+               })
+               (2 {do
+                  {set $dx_autoscore_p2 TRUE}
+                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_ALMOST}
+                  {{gamedata getp 1 provider} set join_state kJoinPlaying}
+               }) 
+            }
+            {ui goto_screen dx_autoplay_screen}
+         )
+         ("OK"
+            {switch $dx_options_target_player
+               (1 {do
+                  {set $dx_autoscore_p1 TRUE}
+                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_ALMOST}
+                  {{gamedata getp 0 provider} set join_state kJoinPlaying}
+               })
+               (2 {do
+                  {set $dx_autoscore_p2 TRUE}
+                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_ALMOST}
+                  {{gamedata getp 1 provider} set join_state kJoinPlaying}
+               }) 
+            }
+            {ui goto_screen dx_autoplay_screen}
+         )
+         ("Flawless"
+            {switch $dx_options_target_player
+               (1 {do
+                  {set $dx_autoscore_p1 TRUE}
+                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_FLAWLESS}
+                  {{gamedata getp 0 provider} set join_state kJoinPlaying}
+               })
+               (2 {do
+                  {set $dx_autoscore_p2 TRUE}
+                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_FLAWLESS}
+                  {{gamedata getp 1 provider} set join_state kJoinPlaying}
+               }) 
+            }
+            {ui goto_screen dx_autoplay_screen}
+         )
+         ("Perfect"
+            {switch $dx_options_target_player
+               (1 {do
+                  {set $dx_autoscore_p1 TRUE}
+                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_FLAWLESS}
+                  {{gamedata getp 0 provider} set join_state kJoinPlaying}
+               })
+               (2 {do
+                  {set $dx_autoscore_p2 TRUE}
+                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_FLAWLESS}
+                  {{gamedata getp 1 provider} set join_state kJoinPlaying}
+               }) 
+            }
+            {ui goto_screen dx_autoplay_screen}
+         )
+      }
+   )
+   (NAV_HIGHLIGHT_MSG
+      {switch $component
+         (right_hand.hnl {set [focus_index] $index})
+      }
+   )
+   (BUTTON_DOWN_MSG
+      {switch $action
+         (
+            (kAction_Cancel)
+            {$this on_back}
+         )
+         kDataUnhandled
+      }
+   )
+   (on_back
+      {saveload_mgr autosave}
+      {ui goto_screen [back_screen]}
+   )
+   (controller_req_op_complete
+      ($success)
+      {if {== $success TRUE}
+         {shell_input set_last_select_in_controller_mode TRUE}
+         {if_else {platform_mgr is_guide_showing}
+            {set [pending_show_keyboard] TRUE}
+            {$this show_keyboard}
+         }
+      }
+   )
+}
+
+{new HamScreen
+   dx_autoplay_diff_screen
+   (panels meta background_panel dx_autoplay_diff_panel)
+   (focus dx_autoplay_diff_panel)
+   (back options_screen)
+   (handle_global_commands TRUE)
+   (enter {voice_input_panel activate_voice_context dx_options_screen})
+   (on_voice_command
+      ($command)
+      {switch $command
+         BACRO
+         {dx_autoplay_diff_panel select_right_list_token $command}
+      }
+   )
+   (on_global_voice_command
+      ($command)
+      {switch $command
+         (hidden_global_options)
+         {on_global_voice_command $command}
+      }
+   )
+}

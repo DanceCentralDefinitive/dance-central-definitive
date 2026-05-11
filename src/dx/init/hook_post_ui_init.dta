@@ -1,0 +1,8 @@
+{print "[dx-init]: hook/post_ui_init called"}
+
+; Add content to initialize below.
+#include ../cheats/autoplay/autoplay_init.dta
+#include ../dx_options_screen.dta
+#include ../download_songs/download_songs_placeholder.dta
+
+; {set $notify_level 0}

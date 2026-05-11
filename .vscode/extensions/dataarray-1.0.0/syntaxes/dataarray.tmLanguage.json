@@ -1,0 +1,212 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "DataArray",
+  "scopeName": "source.dataarray",
+  "fileTypes": ["dta"],
+  "firstLineMatch": "(^\\s*;.*?-\\*-.*?\\blisp\\b.*?-\\*-) # editorconfig",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#parens"
+    },
+    {
+      "include": "#constants"
+    }
+  ],
+  "repository": {
+    "expressions": {
+      "patterns": [
+        {
+          "include": "#comments"
+        },
+        {
+          "include": "#numbers"
+        },
+        {
+          "include": "#constants"
+        },
+        {
+          "include": "#strings"
+        },
+        {
+          "include": "#variables"
+        },
+        {
+          "include": "#control"
+        },
+        {
+          "include": "#functions"
+        },
+        {
+          "include": "#operators"
+        }
+      ]
+    },
+    "variables": {
+      "patterns": [
+        {
+          "name": "variable.language.dataarray",
+          "match": "(\\$)(?x:[a-zA-z0-9]*)|\\#|(\\*)(?i:trace-output|terminal-io|suppress-series-warnings|standard-output|standard-input|readtable|read-suppress|read-eval|read-default-float-format|read-base|random-state|query-io|print-right-margin|print-readably|print-radix|print-pretty|print-pprint-dispatch|print-miser-width|print-lines|print-level|print-length|print-gensym|print-escape|print-circle|print-case|print-base|print-array|package|modules|macroexpand-hook|load-verbose|load-truename|load-print|load-pathname|gensym-counter|features|evalhook|error-output|default-pathname-defaults|debugger-hook|debug-io|compile-verbose|compile-print|compile-file-truename|compile-file-pathname|break-on-warnings|break-on-signals|applyhook)(\\*)",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.variable.begin.dataarray"
+            },
+            "2": {
+              "name": "punctuation.definition.variable.end.dataarray"
+            }
+          }
+        },
+        {
+          "name": "variable.other.global.dataarray",
+          "match": "(\\*)(\\S*)(\\*)",
+          "captures": {
+            "1": { "name": "punctuation.definition.variable.begin.dataarray" },
+            "3": { "name": "punctuation.definition.variable.end.dataarray" }
+          }
+        }
+      ]
+    },
+    "control": {
+      "name": "keyword.control.dataarray",
+      "match": "\\b(with|while|when|unless|typecase|to|thereis|then|get_symbol|foreach_active_player|is_modifier_active|return-from name|return|repeat|prog*|prog|never|named|maplist|mapl|mapcon|mapcar|mapcan|mapc|loop|let|initially|if|if_else|unless|while|do|delete|object|exists|ui|from|for|finally|etypecase|else|dotimes|dolist|doing|do*|do|ctypecase|cond|case|block|as|always)\\b"
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "meta.function.dataarray",
+          "match": "\\b((defun|defmethod|defmacro))\\b\\s+([\\w\\-!?<>]*)",
+          "captures": {
+            "1": {
+              "name": "keyword.declaration.function.dataarray"
+            },
+            "2": {
+              "name": "entity.name.function.dataarray"
+            }
+          }
+        },
+        {
+          "name": "support.function.dataarray",
+          "match": "\\b(zerop|yes-or-no-p|y-or-n-p|write-to-string|write-string|script_task|pop_screen|sync_screen|thread_task|name|foreach_screen|push_screen|goto_screen|set_data|write-char|write-byte|write|with-standard-io-syntax|with-slots|with-simple-restart|with-package-iterator|with-output-to-string|new|with-open-stream|switch|cond|with-open-file|with-input-from-string|with-hash-table-iterator|with-condition-restarts|with-compilation-unit|with-accessors|wild-pathname-p|warn|vectorp|vector-push-extend|TRUE|FALSE|vector-push|vector-pop|vector|variable-information|values-list|values|user-homedir-pathname|use-value|use-package|upper-case-p|upgraded-complex-part-type|upgraded-array-element-type|update-instance-for-redefined-class|update-instance-for-different-class|unuse-package|untrace|until-if|until|unread-char|union|unintern|unexport|typep|type-of|type-error-expected-type|type-error-datum|two-way-stream-output-stream|two-way-stream-input-stream|truncate|truename|tree-equal|translate-pathname|translate-logical-pathname|trace|to-alter|time|third|terpri|terminate-producing|tenth|tanh|tan|tailp|synonym-stream-symbol|symbolp|symbol-value|symbol-plist|symbol-package|symbol-name|symbol-function|sxhash|svref|summing|sum|subtypep|substitute-if-not|substitute-if|substitute|subst-if-not|subst-if|subst|subsetp|subseries|subseq|sublis|stringp|string>=|string>|string=|string<=|string<|string/=|string-upcase|string-trim|string-right-trim|string-not-lessp|string-not-greaterp|string-not-equal|string-lessp|string-left-trim|string-greaterp|string-equal|string-downcase|string-char-p|string-capitalize|string|streamp|stream-external-format|stream-error-stream|stream-element-type|store-value|step|standard-char-p|stable-sort|sqrt|split-if|split|special-form-p|sort|some|software-version|software-type|slot-value|slot-unbound|slot-missing|slot-makunbound|slot-exists-p|slot-boundp|sleep|sixth|sinh|sin|simple-vector-p|simple-string-p|simple-condition-format-string|simple-condition-format-arguments|simple-bit-vector-p|signum|signal|short-site-name|shiftf|shared-initialize|shadowing-import|shadow|seventh|setq|setf|set-syntax-from-char|set-pprint-dispatch|set-macro-character|set-exclusive-or|set-dispatch-macro-character|set-difference|set-char-bit|set|series|second|search|schar|scan-symbols|scan-sublists|scan-range|scan-plist|scan-multiple|scan-lists-of-lists-fringe|scan-lists-of-lists|scan-hash|scan-fn-inclusive|scan-fn|scan-file|scan-alist|scan|scale-float|sbit|rplacd|rplaca|row-major-aref|round|rotatef|room|reverse|revappend|result-of|restart-name|restart-case|restart-bind|rest|require|replace|rename-package|rename-file|remprop|remove-method|remove-duplicates|remove|remhash|remf|reinitialize-instance|reduce|realpart|realp|readtablep|readtable-case|read-preserving-whitespace|read-line|read-from-string|read-delimited-list|read-char-no-hang|read-char|read-byte|read|rationalp|rationalize|rational|rassoc-if-not|rassoc-if|rassoc|random-state-p|random|quote|pushnew|push|psetq|psetf|provide|progn|prog2|prog1|producing|proclaim|probe-file|print-unreadable-object|print-object|print|prin1|previous|pprint-tabular|pprint-tab|pprint-pop|pprint-newline|pprint-logical-block|pprint-linear|pprint-indent|pprint-fill|pprint-exit-if-list-exhausted|pprint-dispatch|positions|position-if-not|position-if|position|pop|plusp|phase|peek-char|pathnamep|pathname-version|pathname-type|pathname-name|pathname-match-p|pathname-host|pathname-directory|pathname-device|pathname|parse-namestring|parse-macro|parse-integer|pairlis|packagep|package-used-by-list|package-use-list|package-shadowing-symbols|package-nicknames|package-name|package-error-package|output-stream-p|open-stream-p|open|oddp|nunion|numerator|numberp|nthcdr|nth-value|nth|nsubstitute-if-not|nsubstitute-if|nsubstitute|nsubst-if-not|nsubst-if|nsubst|nsublis|nstring-upcase|nstring-downcase|nstring-capitalize|nset-exclusive-or|nset-difference|nreverse|nreconc|notevery|notany|no-next-method|no-applicable-method|ninth|nintersection|next-out|next-method-p|next-in|nconcing|nconc|nbutlast|namestring|name-char|multiple-value-setq|multiple-value-list|multiple-value-bind|muffle-warning|mismatch|minusp|minimizing|minimize|mingle|method-qualifiers|method-combination-error|merge-pathnames|memberp|member-if-not|member-if|member|maximizing|maximize|mask-field|mask|mapping|maphash|map-into|map-fn|map|makunbound|make-two-way-stream|make-synonym-stream|make-symbol|make-string-output-stream|make-string-input-stream|make-string|make-sequence|make-random-state|make-pathname|make-package|make-load-form-saving-slots|make-load-form|make-list|make-instances-obsolete|make-instance|make-hash-table|make-echo-stream|make-dispatch-macro-character|make-condition|make-concatenated-stream|make-char|make-broadcast-stream|make-array|macroexpand-1|macroexpand|macro-function|machine-version|machine-type|machine-instance|lower-case-p|loop-finish|long-site-name|logtest|logorc2|logorc1|lognot|lognand|logical-pathname-translations|logical-pathname|logcount|logbitp|logandc2|logandc1|log|locally|load-logical-pathname-translations|load|listp|listen|list-length|list-all-packages|list*|list|lisp-implementation-version|lisp-implementation-type|length|ldiff|ldb-test|ldb|lcm|latch|last|lambda|keywordp|iterate|isqrt|invoke-restart|invoke-debugger|invalid-method-error|intersection|intern|interactive-stream-p|integerp|integer-length|integer-decode-float|int-char|inspect|input-stream-p|initialize-instance|in-package|import|imagpart|ignore-errors|identity|host-namestring|hash-table-test|hash-table-size|hash-table-rehash-threshold|hash-table-rehash-size|hash-table-p|hash-table-count|handler-case|handler-bind|graphic-char-p|gethash|getf|get-universal-time|get-setf-method-multiple-value|get-setf-method|get-properties|get-output-stream-string|get-internal-run-time|get-internal-real-time|get-decoded-time|get|gentemp|gensym|generic-function|generator|gcd|gathering|gatherer|functionp|function-lambda-expression|function-keywords|function-information|funcall|fourth|formatter|format|floor|floatp|float-sign|float-radix|float-precision|float-digits|float|first|finish-output|find-symbol|find-restart|find-package|find-method|find-if-not|find-if|find-class|find-all-symbols|find|fill-pointer|fill|file-write-date|file-string-length|file-position|file-namestring|file-length|file-error-pathname|file-author|fifth|ffloor|fdefinition|fboundp|f|expt|export|expand|exp|every|evenp|evalhook|eval|error|ensure-generic-function|enough-namestring|endp|encode-universal-time|enclose|encapsulated|elt|eighth|ed|echo-stream-output-stream|echo-stream-input-stream|ecase|dribble|dpb|documentation|do-symbols|do-external-symbols|do-all-symbols|disassemble|directory-namestring|directory|digit-char-p|digit-char|destructuring-bind|describe-object|describe|deposit-field|denominator|delete-package|delete-if-not|delete-if|delete-file|delete-duplicates|delete|defvar|deftype|defstruct|defpackage|define-setf-method|define-modify-macro|define-method-combination|define-declaration|define-condition|define-compiler-macro|defgeneric|defclass|decode-universal-time|decode-float|declaration-information|declaim|counting|count-if-not|count-if|count|cotruncate|cosh|cos|copy-tree|copy-symbol|copy-seq|copy-readtable|copy-pprint-dispatch|copy-list|copy-alist|continue|constantp|consp|cons|conjugate|concatenated-stream-streams|concatenate|compute-restarts|compute-applicable-methods|complexp|complex|complement|compiler-macroexpand-1|compiler-macroexpand|compiler-macro-function|compiler-let|compiled-function-p|compile-file-pathname|compile-file|compile|commonp|collecting-fn|collecting|collect-sum|collect-plist|collect-or|collect-nth|collect-nconc|collect-min|collect-max|collect-length|collect-last|collect-hash|collect-fn|collect-first|collect-file|collect-append|collect-and|collect-alist|collect|coerce|code-char|clrhash|close|clear-input|class-of|class-name|cis|chunk|choose-if|choose|check-type|characterp|character|char>=|char>|char=|char<=|char<|char/=|char-upcase|char-not-lessp|char-not-greaterp|char-not-equal|char-name|char-lessp|char-int|char-greaterp|char-font|char-equal|char-downcase|char-code|char-bits|char-bit|char|change-class|cerror|cell-error-name|ceiling|cdr|cddr|cdddr|cddddr|cdddar|cddar|cddadr|cddaar|cdar|cdadr|cdaddr|cdadar|cdaar|cdaadr|cdaaar|ccase|catenate|car|call-next-method|call-method|cadr|caddr|cadddr|caddar|cadar|cadadr|cadaar|caar|caadr|caaddr|caadar|caaar|caaadr|caaaar|byte-size|byte-position|byte|butlast|broadcast-stream-streams|break|boundp|both-case-p|boole|bit-xor|bit-vector-p|bit-orc2|bit-orc1|bit-not|bit-nor|bit-nand|bit-ior|bit-eqv|bit-andc2|bit-andc1|bit-and|bit|augment-environment|atom|atanh|atan|assoc-if-not|assoc-if|assoc|assert|asinh|asin|ash|arrayp|array-total-size|array-row-major-index|array-rank|array-in-bounds-p|array-has-fill-pointer-p|array-element-type|array-dimensions|array-dimension|arithmetic-error-operation|arithmetic-error-operands|aref|apropos-list|apropos|applyhook|apply|appending|append|alter|alphanumericp|alpha-char-p|adjustable-array-p|adjust-array|adjoin|add-method|acosh|acos|acons|abs|abort)\\b"
+        }
+      ]
+    },
+    "operators": {
+      "name": "keyword.operator.dataarray",
+      "patterns": [
+        {
+          "name": "keyword.operator.assignment.dataarray",
+          "match": "\\!|/\\=|\\=\\=|&&|\\|\\||\\>\\=|\\<\\=|\\=|\\>|\\<|\\b(max|min|set_localized|add_sink|selected_sym|set_state|set_mode|text_token|color|set_local_scale|set_local_pos|set_local_rot|set_local_scale_index|set_local_pos_index|set_local_rot_index|set_bitmap|set_text|set_type|set_showing|printf|sprintf|sprint|func|elem|elem_var|foreach|foreach_int|min|max|mod|symbol|int|localize|strneq|print|time|random_int|random_float|random_elem|notify|fail|insert_elems|insert_elem|size|remove_elem|resize|aray|set_elem|literal|eval|reverse_interp|interp|run|handle|exit|enter|find|file_exists|find_exists|find_elem|find_obj|basename|has_substr|search_replace|push_back|var|pack_color|unpack_color|set_this|macro_elem|merge_dirs|eq|neq|eql|invalid|equalp|equal)\\b"
+        },
+        {
+          "name": "keyword.operator.arithmetic.dataarray",
+          "match": "\\+|\\-|\\*|/|\\b(?i:mod|rem|incf|decf)\\b"
+        },
+        {
+          "name": "keyword.operator.logical.dataarray",
+          "match": "\\b(?i:and|or|not)\\b"
+        },
+        {
+          "name": "keyword.operator.bitwise.dataarray",
+          "match": "\\b(?i:logand|logior|logxor|lognor|logeqv)\\b"
+        }
+      ]
+    },
+    "parens": {
+      "name": "meta.group.dataarray",
+      "begin": "(\\(|\\{|\\[)([0-9a-zA-z][a-zA-Z0-9_]*)",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.section.group.begin.dataarray"
+        },
+        "2": {
+          "name": "entity.name.tag.dataarray"
+        }
+      },
+      "end": "(\\)|\\}|\\])",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.section.group.end.dataarray"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#expressions"
+        },
+        {
+          "include": "#parens"
+        },
+        {
+          "name": "invalid.illegal.stray-bracket-end.dataarray",
+          "match": "\\)|\\}|\\]"
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
+        {
+          "name": "constant.language.dataarray",
+          "match": "\\b(null|t|SCROLL_SELECT_MSG|kDataUnhandled|beatmatch|SongSelectPanel|MultiSelectListPanel|BandScreen|GHScreen|UIScreen|GamePanel|OvershellPanel|BandStorePanel|MainHubPanel|profile_mgr|UILabel|UIButton|UIPanel|Mesh|Mat|Group|Tex|GHPanel|UIComponent|BandList|UISlider|memcardmgr|song_provider|gamemode|gamecfg|modifier_mgr|(\\#)include|(\\#)else|define|(\\#)define|(\\#)merge|(\\#)ifdef|(\\#)ifndef|(\\#)endif|FOCUS_MSG|UI_CHANGED_MSG|TRANSITION_COMPLETE_MSG|SELECT_DONE_MSG|BUTTON_DOWN_MSG|SCROLL_MSG|SELECT_MSG|BUTTON_UP_MSG|single-float-negative-epsilon|single-float-epsilon|short-float-negative-epsilon|short-float-epsilon|pi|nil|multiple-values-limit|most-positive-single-float|most-positive-short-float|most-positive-long-float|most-positive-fixnum|most-positive-double-float|most-negative-single-float|most-negative-short-float|most-negative-long-float|most-negative-fixnum|most-negative-double-float|long-float-negative-epsilon|long-float-epsilon|least-positive-single-float|least-positive-short-float|least-positive-normalized-single-float|least-positive-normalized-short-float|least-positive-normalized-long-float|least-positive-normalized-double-float|least-positive-long-float|least-positive-double-float|least-negative-single-float|least-negative-short-float|least-negative-normalized-single-float|least-negative-normalized-short-float|least-negative-normalized-long-float|least-negative-normalized-double-float|least-negative-long-float|least-negative-double-float|lambda-parameters-limit|lambda-list-keywords|internal-time-units-per-second|double-float-negative-epsilon|double-float-epsilon|char-super-bit|char-meta-bit|char-hyper-bit|char-font-limit|char-control-bit|char-code-limit|char-bits-limit|call-arguments-limit|array-total-size-limit|array-rank-limit|array-dimension-limit)\b"
+        },
+        {
+          "name": "constant.language.dataarray",
+          "match": "(#)(\\w|[\\\\+-=<>''\"&#])+",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.keyword.dataarray"
+            }
+          }
+        }
+      ]
+    },
+    "numbers": {
+      "name": "constant.numeric.dataarray",
+      "match": "\\b((0(x|X)\\h*)|(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((e|E)(\\+|-)?[0-9]+)?)(l|ul|u|f|ll|ull)?\\b"
+    },
+    "strings": {
+      "name": "string.quoted.double.dataarray",
+      "begin": "\"",
+      "beginCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.begin.dataarray"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.string.end.dataarray"
+        }
+      },
+      "patterns": [
+        {
+          "name": "constant.character.escape.dataarray",
+          "match": "\\\\."
+        },
+        {
+          "name": "constant.character.escape.dataarray",
+          "match": "\\%%"
+        },
+        {
+          "name": "variable.parameter",
+          "match": "\\%[0-9a-z\\.]+"
+        },
+        {
+          "name": "entity.name.tag",
+          "begin": "<(alt|sup)",
+          "end": ">"
+        }
+      ]
+    },
+    "comments": {
+      "name": "comment.line.semicolon.dataarray",
+      "begin": "(;).*",
+      "end": "\n?",
+      "endCaptures": {
+        "1": {
+          "name": "punctuation.definition.comment.dataarray"
+        }
+      }
+    }
+  }
+}

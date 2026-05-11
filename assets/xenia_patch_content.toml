@@ -1,0 +1,120 @@
+### - DC3DF_START - ###
+### - DC3DF_v1 - ###
+### - Dance Central 3 Deluxe Xenia Debug Patch - ###
+
+[[patch]]
+    name = "Dance Central 3 Deluxe Xenia Debug Patch - V1"
+    desc = "Allows to run Dance Central 3 Deluxe on Xenia by patching Kinect and other related checks on Debug versions."
+    author = "NORXND, glitchgod"
+    is_enabled = true
+
+### - This fixes all the crashes on boot
+
+[[patch.be32]]
+    address = 0x82432f88 # NuiInitialize
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x824330cc # NuiSkeletonTrackingEnable
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x82433124 # NuiImageStreamOpen color
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x82433194 # NuiImageStreamOpen depth
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x8243a1b8 # NuiSpeechEnable E_NUI_DATABASE_NOT_FOUND
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x82331684 # Xenia Exception 1
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x82331788 # Xenia Exception 2
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x825d7934 # Failed to initialize Xbox SmartGlass library
+    value = 0x60000000
+
+
+### stuff after boot
+
+[[patch.be32]]
+    address = 0x82899830 # TheCacheMgr->MountAsync failed with CacheResult %d" "TheCacheMgr->MountAsync failed with CacheResult -1
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x8289c800 # "SaveLoadManager - kS_SongCacheCreateMountWrite unhandled error -1"
+    value = 0x60000000
+
+[[patch.be32]]
+    address = 0x82430314 # "NuiCameraGetExposureRegionOfInterest failed (0x%x)"
+    value = 0x60000000
+
+### - No Checksum
+### - Can't find both instances of Handle::Error so im nop'ing the entire function
+[[patch.be32]]
+    address = 0x8253c440 # mfspr
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c444 # stw
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c448 # ld
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c44c # stwu
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c450 # addi
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c454 # bl Function_827CAD90
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c458 # addi
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c45c # bl Function_827CA520
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c460 # lis
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c464 # or
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c468 # addi
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c46c # bl Function_827D25D0
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c470 # lis
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c474 # li
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c478 # addi
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c47c # bl Function_825E29F0
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c480 # addi
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c484 # lwz
+    value = 0x60000000
+[[patch.be32]]
+    address = 0x8253c488 # mtspr
+    value = 0x60000000
+
+### - DC3DF_END - ###
