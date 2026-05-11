@@ -32,6 +32,29 @@ jobs:
       - name: Build deluxe non-debug patch files
         run: scripts/build.sh --clean
 
+      - name: Extract release notes from changelog
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import os
+          import re
+
+          tag_name = os.environ['GITHUB_REF_NAME']
+          changelog = Path('CHANGELOG.md').read_text(encoding='utf-8')
+          heading_pattern = re.compile(rf'^## \[{re.escape(tag_name)}\] - .+$', re.MULTILINE)
+
+          match = heading_pattern.search(changelog)
+          if not match:
+              raise SystemExit(f'No changelog section found for {tag_name}')
+
+          start = match.start()
+          next_heading = re.search(r'^## \[.+?\] - .+$', changelog[match.end():], re.MULTILINE)
+          end = match.end() + next_heading.start() if next_heading else len(changelog)
+
+          notes = changelog[start:end].strip() + '\n'
+          Path('release-notes.md').write_text(notes, encoding='utf-8')
+          PY
+
       - name: Prepare patch archive
         run: |
           test -f out/gen/patch_xbox.hdr
@@ -45,4 +68,4 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ env.ARCHIVE_NAME }}
-          generate_release_notes: true
+          body_path: release-notes.md
