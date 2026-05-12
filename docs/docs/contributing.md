@@ -1,46 +1,33 @@
 # Contributing
 
-## Development expectations
+Use this page as a quick contributor checklist. For full repository guidance, see the root `CONTRIBUTING.md`.
 
-- Keep changes focused and traceable.
-- Do not mix unrelated refactors with content edits.
-- Update docs for behavioral changes in scripts/tooling.
+## Workflow
 
-## Suggested workflow
+1. Create a focused branch for one logical change.
+2. Implement the smallest reasonable fix or feature.
+3. Run validation relevant to your touched areas.
+4. Update docs if behavior or workflow changed.
+5. Open a pull request using `.github/PULL_REQUEST_TEMPLATE.md`.
 
-1. Create a feature branch.
-2. Make your change.
-3. Run build/test commands relevant to the change.
-4. Document what changed and why.
-5. Open a pull request with validation notes.
-
-## Validation checklist
-
-- default build succeeds:
+## Validation commands
 
 ```bash
 ./scripts/build.sh
-```
-
-- expanded variant build succeeds:
-
-```bash
 ./tools/build.py src bin --vanilla --debug
-```
-
-- helper scripts behave as expected in dry-run mode:
-
-```bash
 ./scripts/flatten-gen.sh --dry-run
 python3 scripts/prune-identical-src.py --dry-run
 ```
 
-## Commit guidance
+Run what applies to your change and report exactly what you executed.
 
-- Prefer concise, descriptive commits.
-- Mention impacted paths/components.
-- Include migration notes if changing build outputs or flags.
+## Pull request expectations
 
-## Attribution
+- State what changed and why.
+- Include validation commands and outcomes.
+- Note limitations, risk, and follow-up work.
+- Keep unrelated refactors out of the same PR.
 
-Keep credits and acknowledgements intact when reusing upstream work.
+## AI-assisted contributions
+
+If you use AI tools, follow `AGENTS.md` to keep edits minimal, reviewable, and safe.
