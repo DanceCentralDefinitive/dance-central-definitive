@@ -96,13 +96,13 @@
             {switch $dx_options_target_player
                (1 {do
                   {set $dx_autoscore_p1 TRUE}
-                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_ALMOST}
+                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_OK}
                   {gamedata setp 0 autoplay "kDifficultyExpert"}
                   {print "[dx-cheats]: autoplay/difficulty set to OK for Player 1"}
                })
                (2 {do
                   {set $dx_autoscore_p2 TRUE}
-                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_ALMOST}
+                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_OK}
                   {gamedata setp 1 autoplay "kDifficultyExpert"}
                   {print "[dx-cheats]: autoplay/difficulty set to OK for Player 2"}
                }) 
@@ -130,13 +130,13 @@
             {switch $dx_options_target_player
                (1 {do
                   {set $dx_autoscore_p1 TRUE}
-                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_FLAWLESS}
+                  {set $dx_autoscore_p1_frac DX_AUTOSCORE_PERFECT}
                   {gamedata setp 0 autoplay "kDifficultyExpert"}
                   {print "[dx-cheats]: autoplay/difficulty set to Perfect for Player 1"}
                })
                (2 {do
                   {set $dx_autoscore_p2 TRUE}
-                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_FLAWLESS}
+                  {set $dx_autoscore_p2_frac DX_AUTOSCORE_PERFECT}
                   {gamedata setp 1 autoplay "kDifficultyExpert"}
                   {print "[dx-cheats]: autoplay/difficulty set to Perfect for Player 2"}
                }) 
