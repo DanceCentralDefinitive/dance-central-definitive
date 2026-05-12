@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here.
 
+## [v0.0.4] - 2026-05-12
+
+### Fixed
+
+- Minor fixes
+
 ## [v0.0.3] - 2026-05-12
 
 ### Added
