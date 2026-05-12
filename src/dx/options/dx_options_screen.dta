@@ -2,13 +2,13 @@
    dx_info_screen
    (panels meta background_confirmation_panel dialog_panel)
    (focus dialog_panel)
-   (enter {dialog_panel set_ok "Dance Central 3 Definitive - Repository: https://github.com/DanceCentralDefinitive/dance-central-definitive - Docs: https://dancecentraldefinitive.github.io/dance-central-definitive/ - Authors: noqenji, liningdesert753, NORXND, Special Thanks to MiloHax" FALSE})
+   (enter {dialog_panel set_ok "Dance Central Definitive\nhttps://github.com/DanceCentralDefinitive/dance-central-definitive\n" FALSE})
    (NAV_SELECT_MSG {ui goto_screen dx_options_screen})
 }
 
 {new OptionsPanel
    dx_options_panel
-   (file "../ui/options/options.milo")
+   (file "../../ui/options/options.milo")
    (focus right_hand.hnl)
    (focus_index 0)
    (pending_show_keyboard FALSE)
@@ -28,8 +28,14 @@
       {dx_options_panel_provider.hnp append_nav_item}
       {dx_options_panel_provider.hnp append_nav_item}
       {dx_options_panel_provider.hnp append_nav_item}
+      {dx_options_panel_provider.hnp append_nav_item}
+      {dx_options_panel_provider.hnp append_nav_item}
       {dx_options_panel_provider.hnp set_label 0 "Autoplay"}
-      {dx_options_panel_provider.hnp set_label 1 "Info"}
+      {dx_options_panel_provider.hnp set_label 1 "Buffer Display / Preview"}
+      {dx_options_panel_provider.hnp set_label 2 "Info / About"}
+      ; {dx_options_panel_provider.hnp set_label 2 "Pack Friends Token"}
+      ; {dx_options_panel_provider.hnp set_label 3 "Show Friends Token"}
+      ; {dx_options_panel_provider.hnp set_label 4 "Info / About"}
       {right_hand.hnl set_provider dx_options_panel_provider.hnp}
       {right_hand.hnl scroll_to_index [focus_index] [top_index]}
    )
@@ -44,7 +50,54 @@
          ("Autoplay"
             {ui goto_screen dx_autoplay_screen}
          )
-         ("Info"
+         ("Buffer Display / Preview"
+            {ui goto_screen dx_buffer_display_screen}
+         )
+         ; ("Pack Friends Token"
+         ;    {do
+         ;       ($profile {profile_mgr get_active_profile})
+         ;       {print $profile}
+         ;       {if $profile
+         ;          {do
+         ;             ($slot 0)
+         ;             ($value 1337)
+         ;             ($packed {'+' $value {'*' 1000000 $slot}})
+         ;             {$profile set_upload_friends_token $packed}
+         ;             {cheat_display show
+         ;                {sprintf
+         ;                   "Saved SLOT %i -> VALUE %i (packed=%i)"
+         ;                   $slot
+         ;                   $value
+         ;                   $packed
+         ;                }
+         ;             }
+         ;          }
+         ;          {cheat_display show "No active profile"}
+         ;       }
+         ;    }
+         ; )
+         ; ("Show Friends Token"
+         ;    {do
+         ;       ($profile {profile_mgr get_active_profile})
+         ;       {if $profile
+         ;          {do
+         ;             ($packed {$profile get_upload_friends_token})
+         ;             ($slot {int {/ $packed 1000000}})
+         ;             ($value {mod $packed 1000000})
+         ;             {cheat_display show
+         ;                {sprintf
+         ;                   "SLOT %i -> VALUE %i (packed=%i)"
+         ;                   $slot
+         ;                   $value
+         ;                   $packed
+         ;                }
+         ;             }
+         ;          }
+         ;          {cheat_display show "No active profile"}
+         ;       }
+         ;    }
+         ; )
+         ("Info / About"
             {ui goto_screen dx_info_screen}
          )
       }

@@ -1,0 +1,4 @@
+
+#include ./buffer_display_panel.dta
+
+{print "[dx-init]: options/buffer_display: screens created"}

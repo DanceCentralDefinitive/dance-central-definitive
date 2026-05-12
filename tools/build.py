@@ -101,6 +101,104 @@ def prepare_src(config):
             shutil.copy2(src_file, dest)
 
 
+def get_git_info(repo_path: Path = Path('.')):
+    try:
+        tag = (
+            subprocess.check_output([
+                "git",
+                "describe",
+                "--tags",
+                "--abbrev=0",
+            ], cwd=repo_path)
+            .strip()
+            .decode()
+        )
+    except Exception:
+        # Fallback to commit short hash if no tag is available
+        try:
+            tag = (
+                subprocess.check_output([
+                    "git",
+                    "rev-parse",
+                    "--short",
+                    "HEAD",
+                ], cwd=repo_path)
+                .strip()
+                .decode()
+            )
+        except Exception:
+            tag = "unknown"
+
+    try:
+        commit = (
+            subprocess.check_output([
+                "git",
+                "rev-parse",
+                "--short",
+                "HEAD",
+            ], cwd=repo_path)
+            .strip()
+            .decode()
+        )
+    except Exception:
+        commit = ""
+
+    return tag, commit
+
+
+def inject_versions_into_obj_src(obj_src_root: Path, tag: str, commit: str):
+    try:
+        branch = (
+            subprocess.check_output(
+                ["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=Path(".")
+            )
+            .strip()
+            .decode()
+        )
+    except Exception:
+        branch = ""
+
+    ham_path = obj_src_root.joinpath("config", "ham_version.dta")
+    if ham_path.exists():
+        try:
+            ham_path.write_text(f'"Definitive: {tag} ({branch} / {commit}) / DC3: 1221004"\n')
+        except Exception:
+            pass
+
+    dx_ver_path = obj_src_root.joinpath("dx", "dx_version.dta")
+    if dx_ver_path.exists():
+        try:
+            build_time = (
+                subprocess.check_output(
+                    [
+                        sys.executable,
+                        "-c",
+                        "from datetime import datetime; print(datetime.utcnow().replace(microsecond=0).isoformat() + 'Z')",
+                    ]
+                )
+                .strip()
+                .decode()
+            )
+        except Exception:
+            build_time = ""
+
+        try:
+            dx_ver_path.write_text(
+                "\n".join(
+                    [
+                        f'(dx_version "{tag}")',
+                        f'(dx_tag "{tag}")',
+                        f'(dx_commit "{commit}")',
+                        f'(dx_branch "{branch}")',
+                        f'(dx_build_time "{build_time}")',
+                    ]
+                )
+                + "\n"
+            )
+        except Exception:
+            pass
+
+
 def prepare_ninja(config):
     ninja.variable("ark_version", "-v 6")
     ninja.variable("dtb_encrypt", "-e")
@@ -372,6 +470,13 @@ def run_build(config):
     build_files = []
 
     prepare_src(config)
+    # Inject current git tag/commit into copied src files so build contains correct versions
+    try:
+        tag, commit = get_git_info(Path('.'))
+        inject_versions_into_obj_src(Path('obj', 'src'), tag, commit)
+    except Exception:
+        # Non-fatal: continue even if injection fails
+        pass
     run_dtacheck(config)
     prepare_ninja(config)
 

@@ -4,6 +4,10 @@ Dance Central Definitive is a patch/mod workspace for Dance Central 3 content, p
 
 The repository contains source game data (`src/`), build tooling (`tools/build.py`), helper scripts (`scripts/`), and docs (`docs/`).
 
+**You can read the docs [here!](https://dancecentraldefinitive.github.io/dance-central-definitive/)**
+
+*You can find instructions and such there!*
+
 ## What this project does
 
 - Builds Xbox 360 patch arks from `src/` content.

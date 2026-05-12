@@ -1,0 +1,11 @@
+{rnd show_console}
+{print "[dx-init]: options/init: called!"}
+
+; Options
+#include ./autoplay/autoplay_init.dta
+#include ./buffer_display/buffer_display_init.dta
+
+; The main screen goes last
+#include ./dx_options_screen.dta
+
+{print "[dx-init]: options/init: options screen created!"}

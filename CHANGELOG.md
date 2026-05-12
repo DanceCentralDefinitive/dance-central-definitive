@@ -2,6 +2,26 @@
 
 All notable changes to this project are documented here.
 
+## [v0.0.3] - 2026-05-12
+
+### Added
+
+- Disabled motion blur in all menus.
+- Added instructions for non-technical users / players
+- Added ability to enable/disable depth buffers
+
+### Changed
+
+- Xenia patch is now static and works for all versions
+- Improved and simplified the build process
+- Improved CI/CD and automatic code verification
+
+
+### Fixed
+
+- Autoplay now also fakes player being active.
+- Minor DTA fixes
+
 ## [v0.0.2] - 2026-05-11
 
 ### Added
