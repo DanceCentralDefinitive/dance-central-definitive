@@ -1,3 +1,5 @@
+{print "[dx-init]: hook/pre_ui_init called"}
+
 ; Motion Blur
 #define DX_NO_MENU_MOTIONBLUR
 (

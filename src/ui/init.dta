@@ -1,3 +1,4 @@
+#include ../dx/init/hook_pre_ui_init.dta
 #ifdef UI_INIT_DTA
 #else
 #define UI_INIT_DTA

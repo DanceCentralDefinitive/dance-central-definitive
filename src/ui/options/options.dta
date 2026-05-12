@@ -9,7 +9,7 @@
    (top_index 0)
    (back_token back)
    (back_screen main_screen)
-   (enter
+   (enter DX_NO_MENU_MOTIONBLUR
       {platform_mgr add_sink $this (ui_changed)}
       {set [pending_show_keyboard] FALSE}
       {set [pending_purchase_offer] FALSE}
@@ -91,7 +91,7 @@
    (focus options_panel)
    (back main_screen)
    (handle_global_commands TRUE)
-   (enter {voice_input_panel activate_voice_context options_screen})
+   (enter DX_NO_MENU_MOTIONBLUR {voice_input_panel activate_voice_context options_screen})
    (on_voice_command
       ($command)
       {switch $command
@@ -113,7 +113,7 @@
    (file "options_movie.milo")
    (focus right_hand.hnl)
    (back_token back)
-   (enter
+   (enter DX_NO_MENU_MOTIONBLUR
       {movie_provider update_list}
       {right_hand.hnl set_provider movie_provider}
       {voice_input_panel activate_voice_context options_movies_screen}
@@ -169,7 +169,7 @@
    (panels meta outro_movie_panel movie_overlay_panel)
    (focus movie_overlay_panel)
    (next_screen options_movie_screen)
-   (enter {meta music_stop})
+   (enter DX_NO_MENU_MOTIONBLUR {meta music_stop})
    (exit {meta music_start})
    (skip_selected {ui goto_screen options_movie_screen})
 }
@@ -191,7 +191,7 @@
    (panels meta intro_movie_panel movie_overlay_panel)
    (focus movie_overlay_panel)
    (next_screen options_movie_screen)
-   (enter {meta music_stop})
+   (enter DX_NO_MENU_MOTIONBLUR {meta music_stop})
    (exit {meta music_start})
    (skip_selected {ui goto_screen options_movie_screen})
 }
@@ -213,7 +213,7 @@
    (panels meta crew_movie_panel movie_overlay_panel)
    (focus movie_overlay_panel)
    (next_screen options_movie_screen)
-   (enter {meta music_stop})
+   (enter DX_NO_MENU_MOTIONBLUR {meta music_stop})
    (exit {meta music_start})
    (skip_selected {ui goto_screen options_movie_screen})
 }

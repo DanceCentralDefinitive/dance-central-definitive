@@ -427,7 +427,7 @@
                   get_clip_names}
                (still)})
          (enter
-            {if
+            DX_NO_MENU_MOTIONBLUR {if
                [backlight]
                {if
                   {!=
@@ -821,7 +821,7 @@
          (last_snd
             "")
          (enter
-            {set
+            DX_NO_MENU_MOTIONBLUR {set
                [edit_snd]
                ""})
          (flow_commands
@@ -1233,7 +1233,7 @@
    (types
       (band
          (enter
-            {$this set_fullness 1 1}
+            DX_NO_MENU_MOTIONBLUR {$this set_fullness 1 1}
             {handle
                ($hamwardrobe add_crowd $this)}))))
 (WorldDir
@@ -1858,7 +1858,7 @@
                   "Do the guys look at the cameras in this venue?  if false, they can still be forced to look at the camera through song anim keyframes or shot-specific lookats"))
             WORLD_OBJECT_EDITOR_COMMON)
          (enter
-            WORLD_SETUP_CHARACTERS
+            DX_NO_MENU_MOTIONBLUR WORLD_SETUP_CHARACTERS
             {if
                {exists game_panel}
                {game_panel
@@ -1897,7 +1897,7 @@
                   "Refresh postprocessor selection on the tool")))
          (postprocess '')
          (enter
-            {$this update_postproc})
+            DX_NO_MENU_MOTIONBLUR {$this update_postproc})
          (update_postproc
             {if_else
                [postprocess]
@@ -2984,7 +2984,7 @@
             (-1 -1))
          (have_initialized_freestyle_range FALSE)
          (enter
-            {if
+            DX_NO_MENU_MOTIONBLUR {if
                {$this get_world}
                {{$this get_world}
                   add_sink
