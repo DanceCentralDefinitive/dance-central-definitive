@@ -1,8 +1,6 @@
 title_name = "Dance Central 3"
 title_id = "373307D9"
 hash = [
-    "6B15C22CA94CC2E1",  # vanilla.xex
-    "A07D226D366E0887",  # deluxe.xex
     "A9FAAA8E4E739E19",  # deluxe_debug.xex
     "A9FAAA8E4E739E19",  # vanilla_debug.xex
 ]
