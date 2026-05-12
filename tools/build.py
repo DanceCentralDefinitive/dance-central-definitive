@@ -56,6 +56,16 @@ XENIA_RUN_MAP = {
 }
 
 
+def get_dtacheck_executable():
+    match sys.platform:
+        case "win32":
+            return Path("tools", "windows", "dtacheck.exe")
+        case "darwin":
+            return Path("tools", "macos", "dtacheck")
+        case _:
+            return Path("tools", "linux", "dtacheck")
+
+
 def ark_file_filter(file: Path):
     if file.is_dir():
         return False
@@ -156,7 +166,6 @@ def prepare_ninja(config):
         f"$superfreq png2tex -l error $miloVersion --platform $platform $in $out",
         description="SFREQ $in",
     )
-    ninja.rule("dtacheck", "$dtacheck $in .dtacheckfns", description="DTACHECK $in")
     ninja.rule("dtab_serialize", "$dtab -b $in $out", description="DTAB SER $in")
     ninja.rule(
         "dtab_encrypt", f"$dtab $dtb_encrypt $in $out", description="DTAB ENC $in"
@@ -193,7 +202,8 @@ def prepare_build(config):
                 serialize_output = serialize_directory.joinpath(target_filename)
                 encryption_output = output_directory.joinpath(target_filename)
                 stamp = serialize_directory.joinpath(stamp_filename)
-                ninja.build(str(stamp), "dtacheck", str(f))
+                stamp.parent.mkdir(parents=True, exist_ok=True)
+                stamp.touch()
                 ninja.build(
                     str(serialize_output),
                     "dtab_serialize",
@@ -221,6 +231,34 @@ def prepare_build(config):
     )
 
     return hdr
+
+
+def run_dtacheck(config):
+    dtacheck_exe = get_dtacheck_executable()
+
+    for dta_file in Path("obj", "src").rglob("*.dta"):
+        result = subprocess.run(
+            [str(dtacheck_exe), str(dta_file), ".dtacheckfns"],
+            capture_output=True,
+            text=True,
+        )
+        combined_output = (result.stdout or "") + (result.stderr or "")
+        has_checker_error = "error:" in combined_output.lower()
+
+        if result.returncode != 0 or has_checker_error:
+            if config["allow_dtacheck_errors"]:
+                print(f"DTACHECK reported issues in {dta_file}")
+                if combined_output.strip():
+                    print(combined_output.rstrip())
+                continue
+
+            message = [
+                f"DTACHECK failed for {dta_file}.",
+                f"Exit code: {result.returncode}",
+            ]
+            if combined_output.strip():
+                message.append(combined_output.rstrip())
+            raise RuntimeError("\n".join(message))
 
 
 def prepare_includes(config):
@@ -277,165 +315,46 @@ def clean(config):
             shutil.rmtree("obj")
 
 
-def render_template(template_path, output_path, **context):
-    with open(template_path, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    # Process each context variable
-    for key, value in context.items():
-        placeholder = f"{{{key}}}"
-
-        if placeholder in content:
-            if isinstance(value, list):
-                # Format list items for TOML array
-                formatted_items = ",\n".join(f'    "{item}"' for item in value)
-                content = content.replace(placeholder, formatted_items)
-            else:
-                # Simple string/number substitution
-                content = content.replace(placeholder, str(value))
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        f.write(content)
+def copy_patch_file(config):
+    source_patch = Path("assets", "373307D9 - Dance Central 3.patch.toml")
+    
+    if config["patch_output"]:
+        dest = Path(config["patch_output"]) / source_patch.name
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source_patch, dest)
+    
+    if config["xenia_root"]:
+        xenia_patches_dir = Path(config["xenia_root"]) / "patches"
+        xenia_patches_dir.mkdir(parents=True, exist_ok=True)
+        dest = xenia_patches_dir / source_patch.name
+        shutil.copy2(source_patch, dest)
 
 
-def handle_xenia(config, xex_files):
-    if not config["xenia_path"]:
+def launch_xenia(config, xex_files):
+    if config["xenia_run"] == 0 or not config["xenia_path"]:
         return
 
-    if config["xenia_patch"]:
-        # Prepare Xenia patch
-        xenia_template_path = Path("assets", "xenia_patch_template.toml")
-        xenia_patch_content_path = Path("assets", "xenia_patch_content.toml")
-        patch_content_body = (
-            xenia_patch_content_path.read_text(encoding="utf-8").strip() + "\n"
-        )
-        xenia_hashes = {
-            "vanilla.xex": "A9FAAA8E4E739E19",
-            "deluxe.xex": "98552AC419B4C690",
-            "deluxe_debug.xex": "6B15C22CA94CC2E1",
-            "vanilla_debug.xex": "8D7A4A25A9EB6634",
-        }
+    run_xex_name = XENIA_RUN_MAP[config["xenia_run"]]
+    if run_xex_name is None:
+        return
 
-        xenia_root = Path(config["xenia_path"]).parent
-        patches_dir = xenia_root / "patches"
-        patches_dir.mkdir(exist_ok=True, parents=True)
+    run_xex_path = Path(config["output"]) / run_xex_name
+    if not run_xex_path.exists():
+        print(f"Error: XEX to run with Xenia '{run_xex_path}' does not exist.")
+        return
 
-        def append_hash_entry(existing_text: str, new_hash: str) -> str:
-            """Insert a missing module hash into the existing hash array while preserving formatting."""
-            if not new_hash:
-                return existing_text
+    xenia_exe = Path(config["xenia_path"])
+    extra_args = shlex.split(
+        config["xenia_args"],
+        posix=(sys.platform != "win32"),
+    )
+    cmd = [str(xenia_exe), str(run_xex_path), *extra_args]
+    print(f"Running Xenia: {' '.join(shlex.quote(part) for part in cmd)}")
 
-            lines = existing_text.splitlines()
-            hash_start = next(
-                (i for i, line in enumerate(lines) if line.strip().startswith("hash")),
-                None,
-            )
-
-            if hash_start is None:
-                block = ["hash = [", f'    "{new_hash}"', "]"]
-                prefix = (
-                    "\n" if not existing_text.endswith("\n") and existing_text else ""
-                )
-                return existing_text + prefix + "\n".join(block) + "\n"
-
-            closing_idx = None
-            for i in range(hash_start, len(lines)):
-                if lines[i].strip().startswith("]"):
-                    closing_idx = i
-                    break
-
-            if closing_idx is None:
-                # Malformed block, fall back to appending a new block at the end
-                block = ["hash = [", f'    "{new_hash}"', "]"]
-                prefix = (
-                    "\n" if not existing_text.endswith("\n") and existing_text else ""
-                )
-                return existing_text + prefix + "\n".join(block) + "\n"
-
-            # Ensure previous entry ends with a comma when needed
-            prev_idx = closing_idx - 1
-            while prev_idx > hash_start and lines[prev_idx].strip() == "":
-                prev_idx -= 1
-
-            if prev_idx >= hash_start:
-                stripped = lines[prev_idx].rstrip()
-                if stripped and not stripped.endswith(",") and stripped.strip() != "[":
-                    lines[prev_idx] = stripped + ","
-
-            # Match indentation of previous non-empty line or default to 4 spaces
-            indent_source = lines[prev_idx] if prev_idx >= 0 else "    "
-            indent = (
-                indent_source[: len(indent_source) - len(indent_source.lstrip())]
-                or "    "
-            )
-
-            lines.insert(closing_idx, f'{indent}"{new_hash}"')
-            return "\n".join(lines) + ("\n" if existing_text.endswith("\n") else "")
-
-        for xex_path in xex_files:
-            title_id = XEX_INFO["default_id"]
-            module_hash = xenia_hashes.get(Path(xex_path).name, "")
-
-            patch_file = patches_dir / f"{title_id} - Dance Central 3.patch.toml"
-
-            if patch_file.exists():
-                existing = patch_file.read_text(encoding="utf-8")
-
-                try:
-                    parsed = tomllib.loads(existing) if tomllib else None
-                    existing_hashes = set(parsed.get("hash", [])) if parsed else set()
-                except Exception:
-                    existing_hashes = set()
-
-                needs_hash = bool(module_hash and module_hash not in existing_hashes)
-                needs_patch_body = "### - DC3DX_v1 - ###" not in existing
-
-                updated = existing
-                if needs_hash:
-                    updated = append_hash_entry(updated, module_hash)
-
-                if needs_patch_body:
-                    if not updated.endswith("\n"):
-                        updated += "\n"
-                    updated += "\n" + patch_content_body
-
-                if updated != existing:
-                    patch_file.write_text(updated, encoding="utf-8")
-            else:
-                render_template(
-                    xenia_template_path,
-                    patch_file,
-                    title_id=title_id,
-                    hashes=[module_hash],
-                    patch_content=patch_content_body,
-                )
-
-    if config["xenia_run"] != 0:
-        run_xex_name = XENIA_RUN_MAP[config["xenia_run"]]
-        if run_xex_name is None:
-            return
-
-        if not config["xenia_path"]:
-            print("Error: --xenia-run requires --xenia-path.")
-            return
-
-        run_xex_path = Path(config["output"]) / run_xex_name
-        if not run_xex_path.exists():
-            print(f"Error: XEX to run with Xenia '{run_xex_path}' does not exist.")
-            return
-
-        xenia_exe = Path(config["xenia_path"])
-        extra_args = shlex.split(
-            config["xenia_args"],
-            posix=(sys.platform != "win32"),
-        )
-        cmd = [str(xenia_exe), str(run_xex_path), *extra_args]
-        print(f"Running Xenia: {' '.join(shlex.quote(part) for part in cmd)}")
-
-        if sys.platform == "win32":
-            subprocess.Popen(cmd, creationflags=subprocess.DETACHED_PROCESS)
-        else:
-            subprocess.Popen(cmd)
+    if sys.platform == "win32":
+        subprocess.Popen(cmd, creationflags=subprocess.DETACHED_PROCESS)
+    else:
+        subprocess.Popen(cmd)
 
 
 def run_build(config):
@@ -453,6 +372,7 @@ def run_build(config):
     build_files = []
 
     prepare_src(config)
+    run_dtacheck(config)
     prepare_ninja(config)
 
     hdr = prepare_build(config)
@@ -488,8 +408,11 @@ def run_build(config):
     # Post build
     clean(config)
 
-    # Handle Xenia patching & running
-    handle_xenia(config, xex_files)
+    # Copy patch file to output locations
+    copy_patch_file(config)
+
+    # Launch Xenia if requested
+    launch_xenia(config, xex_files)
 
 
 def main():
@@ -532,6 +455,23 @@ def main():
         help="Cleans cache after build",
     )
     parser.add_argument(
+        "--allow-dtacheck-errors",
+        action="store_true",
+        help="Do not fail the build when dtacheck reports errors",
+    )
+    parser.add_argument(
+        "--patch-output",
+        type=Path,
+        default=None,
+        help="Directory to copy Xenia patch to",
+    )
+    parser.add_argument(
+        "--xenia-root",
+        type=Path,
+        default=None,
+        help="Path to Xenia root directory (will copy patch to patches/ subdirectory)",
+    )
+    parser.add_argument(
         "--cwd",
         type=Path,
         default=Path("."),
@@ -545,11 +485,6 @@ def main():
         choices=range(5),
         default=0,
         help="Game to run with Xenia: 0=None (Default), 1=Deluxe, 2=Vanilla, 3=Deluxe Debug, 4=Vanilla Debug",
-    )
-    xenia_group.add_argument(
-        "--xenia-patch",
-        action="store_true",
-        help="Adds a Xenia patch to the given Xenia installation (can override existing DC3 / DC3DX patch!)",
     )
     xenia_group.add_argument(
         "--xenia-args",
@@ -595,10 +530,12 @@ def main():
         "includes": args.includes,
         "versions": versions_to_build,
         "clean": args.clean,
+        "allow_dtacheck_errors": args.allow_dtacheck_errors,
+        "patch_output": args.patch_output,
+        "xenia_root": args.xenia_root,
         "xenia_path": args.xenia_path,
         "xenia_run": args.xenia_run,
         "xenia_args": args.xenia_args,
-        "xenia_patch": args.xenia_patch,
     }
 
 

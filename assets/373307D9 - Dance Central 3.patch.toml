@@ -1,6 +1,11 @@
-### - DC3DF_START - ###
-### - DC3DF_v1 - ###
-### - Dance Central 3 Deluxe Xenia Debug Patch - ###
+title_name = "Dance Central 3"
+title_id = "373307D9"
+hash = [
+    "6B15C22CA94CC2E1",  # vanilla.xex
+    "A07D226D366E0887",  # deluxe.xex
+    "A9FAAA8E4E739E19",  # deluxe_debug.xex
+    "A9FAAA8E4E739E19",  # vanilla_debug.xex
+]
 
 [[patch]]
     name = "Dance Central 3 Deluxe Xenia Debug Patch - V1"
@@ -116,5 +121,3 @@
 [[patch.be32]]
     address = 0x8253c488 # mtspr
     value = 0x60000000
-
-### - DC3DF_END - ###

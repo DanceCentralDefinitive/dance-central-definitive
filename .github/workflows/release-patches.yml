@@ -30,7 +30,7 @@ jobs:
           printf '"Build: Definitive %s (commit: %s base: 121004)"\n' "$GITHUB_REF_NAME" "$SHORT_COMMIT_HASH" > src/config/ham_version.dta
 
       - name: Build deluxe non-debug patch files
-        run: scripts/build.sh --clean
+        run: scripts/build.sh --clean --xenia-root xenia
 
       - name: Extract release notes from changelog
         run: |
@@ -60,17 +60,21 @@ jobs:
           test -f out/gen/patch_xbox.hdr
           test -f out/gen/patch_xbox_0.ark
           test -f out/deluxe.xex
+          PATCH_NAME="373307D9 - Dance Central 3.patch.toml"
+          test -f "xenia/patches/$PATCH_NAME"
 
           PACKAGE_DIR="release-package"
           rm -rf "$PACKAGE_DIR"
           mkdir -p "$PACKAGE_DIR/gen"
+          mkdir -p "$PACKAGE_DIR/xenia/patches"
 
           cp out/deluxe.xex "$PACKAGE_DIR/definitive.xex"
           cp out/gen/patch_xbox.hdr "$PACKAGE_DIR/gen/patch_xbox.hdr"
           cp out/gen/patch_xbox_0.ark "$PACKAGE_DIR/gen/patch_xbox_0.ark"
+          cp "xenia/patches/$PATCH_NAME" "$PACKAGE_DIR/xenia/patches/$PATCH_NAME"
 
           ARCHIVE_NAME="dance-central-definitive-patches-${GITHUB_REF_NAME}.zip"
-          (cd "$PACKAGE_DIR" && zip -r "../$ARCHIVE_NAME" definitive.xex gen)
+          (cd "$PACKAGE_DIR" && zip -r "../$ARCHIVE_NAME" definitive.xex gen xenia)
 
           echo "ARCHIVE_NAME=$ARCHIVE_NAME" >> "$GITHUB_ENV"
 

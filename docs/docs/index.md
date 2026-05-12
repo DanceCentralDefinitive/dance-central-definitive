@@ -2,6 +2,8 @@
 
 This documentation covers the full build and content workflow for this repository.
 
+If you only want to install and play the game, start with [Play the Game](play-the-game.md).
+
 Use it as the source of truth for:
 
 - preparing your environment,
