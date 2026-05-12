@@ -64,9 +64,6 @@
          practiceresults_overall_score
          {{game_panel get mini_game} get_overall_pct 1}
       }
-      {if {== {{game_panel get mini_game} get_win_player} 1}
-
-      }
       {results.ep set high_score {meta_performer got_moves_passed_best}}
    )
    (on_restart

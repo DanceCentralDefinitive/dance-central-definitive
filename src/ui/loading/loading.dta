@@ -105,13 +105,15 @@
    (panels loading_panel rhythm_detector_panel keep_game_world_panel)
    (focus loading_panel)
    (enter
-      DX_NO_MENU_MOTIONBLUR {if_else {== practice {gamemode get gameplay_mode}}
-         {print "in practice_transition_screen : gameplay_mode = practice\n"}
-         {if_else {== campaign_practice {gamemode get gameplay_mode}}
+      DX_NO_MENU_MOTIONBLUR {cond
+         ({== practice {gamemode get gameplay_mode}}
+            {print "in practice_transition_screen : gameplay_mode = practice\n"}
+         )
+         ({== campaign_practice {gamemode get gameplay_mode}}
             {print
                "in practice_transition_screen : gameplay_mode = campaign_practice\n"
             }
-         }
+         )
       }
       {if
          {==

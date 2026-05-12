@@ -1536,9 +1536,6 @@
          }
       }
       {$this check_full_length_songs}
-      {if {hamprovider get is_in_infinite_party_mode}
-
-      }
    )
    (enter
       DX_NO_MENU_MOTIONBLUR {$this refresh}
