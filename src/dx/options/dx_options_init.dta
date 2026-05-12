@@ -1,4 +1,3 @@
-{rnd show_console}
 {print "[dx-init]: options/init: called!"}
 
 ; Options

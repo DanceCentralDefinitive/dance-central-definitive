@@ -102,6 +102,20 @@ def prepare_src(config):
 
 
 def get_git_info(repo_path: Path = Path('.')):
+    # Check if we're in a git repository first
+    try:
+        subprocess.check_output(
+            ["git", "rev-parse", "--git-dir"],
+            cwd=repo_path,
+            stderr=subprocess.DEVNULL
+        )
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        # Not a git repo or git not installed, return defaults
+        return "unknown", ""
+    
+    tag = "unknown"
+    commit = ""
+    
     try:
         tag = (
             subprocess.check_output([
@@ -109,7 +123,7 @@ def get_git_info(repo_path: Path = Path('.')):
                 "describe",
                 "--tags",
                 "--abbrev=0",
-            ], cwd=repo_path)
+            ], cwd=repo_path, stderr=subprocess.DEVNULL)
             .strip()
             .decode()
         )
@@ -122,7 +136,7 @@ def get_git_info(repo_path: Path = Path('.')):
                     "rev-parse",
                     "--short",
                     "HEAD",
-                ], cwd=repo_path)
+                ], cwd=repo_path, stderr=subprocess.DEVNULL)
                 .strip()
                 .decode()
             )
@@ -136,7 +150,7 @@ def get_git_info(repo_path: Path = Path('.')):
                 "rev-parse",
                 "--short",
                 "HEAD",
-            ], cwd=repo_path)
+            ], cwd=repo_path, stderr=subprocess.DEVNULL)
             .strip()
             .decode()
         )
@@ -147,15 +161,21 @@ def get_git_info(repo_path: Path = Path('.')):
 
 
 def inject_versions_into_obj_src(obj_src_root: Path, tag: str, commit: str):
+    branch = ""
+    
+    # Try to get branch name if git is available
     try:
         branch = (
             subprocess.check_output(
-                ["git", "rev-parse", "--abbrev-ref", "HEAD"], cwd=Path(".")
+                ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+                cwd=Path("."),
+                stderr=subprocess.DEVNULL
             )
             .strip()
             .decode()
         )
     except Exception:
+        # Git not available or not in repo, use empty string
         branch = ""
 
     ham_path = obj_src_root.joinpath("config", "ham_version.dta")
