@@ -2083,14 +2083,14 @@
                "char/main/dancer/ringo01.milo")
             (rival_outfit ninjawoman01)
             (backup_rival_outfit lima05)
-            (backup_dancers skeleton01)
+            (backup_dancers lush01)
             (screen_name crew_look))
          (ringo02
             (model
                "char/main/dancer/ringo02.milo")
             (rival_outfit ninjawoman01)
             (backup_rival_outfit lima05)
-            (backup_dancers skeleton01)
+            (backup_dancers lush01)
             (screen_name like_a_boss))))
    (paul
       (viseme
@@ -2103,14 +2103,14 @@
                "char/main/dancer/paul01.milo")
             (rival_outfit ninjawoman01)
             (backup_rival_outfit lima05)
-            (backup_dancers skeleton01)
+            (backup_dancers lush01)
             (screen_name crew_look))
          (paul02
             (model
                "char/main/dancer/paul02.milo")
             (rival_outfit ninjawoman01)
             (backup_rival_outfit lima05)
-            (backup_dancers skeleton01)
+            (backup_dancers lush01)
             (screen_name like_a_boss))))
    (george
       (viseme
@@ -2123,14 +2123,14 @@
                "char/main/dancer/george01.milo")
             (rival_outfit ninjawoman01)
             (backup_rival_outfit lima05)
-            (backup_dancers skeleton01)
+            (backup_dancers lush01)
             (screen_name crew_look))
          (george02
             (model
                "char/main/dancer/george02.milo")
             (rival_outfit ninjawoman01)
             (backup_rival_outfit lima05)
-            (backup_dancers skeleton01)
+            (backup_dancers lush01)
             (screen_name like_a_boss))))
    (john
       (viseme
@@ -2143,14 +2143,14 @@
                "char/main/dancer/john01.milo")
             (rival_outfit ninjawoman01)
             (backup_rival_outfit lima05)
-            (backup_dancers skeleton01)
+            (backup_dancers lush01)
             (screen_name crew_look))
          (john02
             (model
                "char/main/dancer/john02.milo")
             (rival_outfit ninjawoman01)
             (backup_rival_outfit lima05)
-            (backup_dancers skeleton01)
+            (backup_dancers lush01)
             (screen_name like_a_boss))))
    (miku
       (gender kGenderFemale)
@@ -2161,7 +2161,7 @@
                "char/main/dancer/miku01.milo")
             (rival_outfit aubrey01)
             (backup_rival_outfit aubrey02)
-            (backup_dancers skeleton01)
+            (backup_dancers miku01)
             (screen_name crew_look))))
    (teto
       (gender kGenderFemale)
@@ -2172,7 +2172,7 @@
                "char/main/dancer/teto01.milo")
             (rival_outfit aubrey01)
             (backup_rival_outfit aubrey02)
-            (backup_dancers skeleton01)
+            (backup_dancers teto01)
             (screen_name crew_look))))
    (ddronen
       (gender kGenderMale)
@@ -2270,7 +2270,7 @@
                "char/main/dancer/walter01.milo")
             (rival_outfit rasa05)
             (backup_rival_outfit rasa05)
-            (backup_dancers skeleton01)
+            (backup_dancers dci02)
             (screen_name dc_classic))))
    (heavy
       (gender kGenderMale)
@@ -2281,14 +2281,14 @@
                "char/main/dancer/heavy01.milo")
             (rival_outfit angel01)
             (backup_rival_outfit angel02)
-            (backup_dancers skeleton01)
+            (backup_dancers dci02)
             (screen_name crew_look))
          (heavy02
             (model
                "char/main/dancer/heavy02.milo")
             (rival_outfit angel01)
             (backup_rival_outfit angel02)
-            (backup_dancers skeleton01)
+            (backup_dancers dci02)
             (screen_name crew_look))))
    (doll
       (gender kGenderFemale)
@@ -2312,31 +2312,89 @@
       (gender kGenderFemale)
       (playable FALSE)
       (outfits
-         (doll01
+         (cyn01
             (model
                "char/main/dancer/cyn01.milo")
             (rival_outfit angel01)
             (backup_rival_outfit angel02)
             (backup_dancers skeleton01)
-            (screen_name crew_look))
-         (doll02
-            (model
-               "char/main/dancer/cyn03.milo")
-            (rival_outfit angel01)
-            (backup_rival_outfit angel02)
-            (backup_dancers skeleton01)
             (screen_name crew_look))))
-   (bird
-      (gender kGenderMale)
+   (miku01_bd01
+      (gender kGenderFemale)
       (playable FALSE)
       (outfits
-         (bird01
+         (miku01_bd01
             (model
-               "char/main/dancer/bird01.milo")
-            (rival_outfit angel01)
-            (backup_rival_outfit angel02)
+               "char/main/backup/miku01_bd01.milo")
+            (rival_outfit mo03)
+            (backup_rival_outfit mo04)
             (backup_dancers skeleton01)
-            (screen_name crew_look)))))
+            (screen_name crew_look))
+         (miku01_bd02
+            (model
+               "char/main/backup/miku01_bd02.milo")
+            (rival_outfit mo03)
+            (backup_rival_outfit mo04)
+            (backup_dancers skeleton01)
+            (screen_name battle_damage))))
+   (teto01_bd01
+      (gender kGenderFemale)
+      (playable FALSE)
+      (outfits
+         (teto01_bd01
+            (model
+               "char/main/backup/teto01_bd01.milo")
+            (rival_outfit mo03)
+            (backup_rival_outfit mo04)
+            (backup_dancers skeleton01)
+            (screen_name crew_look))
+         (teto01_bd02
+            (model
+               "char/main/backup/teto01_bd02.milo")
+            (rival_outfit mo03)
+            (backup_rival_outfit mo04)
+            (backup_dancers skeleton01)
+            (screen_name battle_damage))))
+   (kyoko
+      (viseme
+         "char/main/dancer/hidef01_bd01/viseme.milo")
+      (gender kGenderFemale)
+      (playable FALSE)
+      (outfits
+         (kyoko01
+            (model
+               "char/main/dancer/skeleton01_bd01.milo")
+            (rival_outfit mo03)
+            (backup_rival_outfit mo04)
+            (backup_dancers dcoy02)
+            (screen_name crew_look))
+         (kyoko02
+            (model
+               "char/main/dancer/skeleton01_bd01.milo")
+            (rival_outfit mo03)
+            (backup_rival_outfit mo04)
+            (backup_dancers dcoy02)
+            (screen_name street_style))))
+   (sade
+      (viseme
+         "char/main/dancer/hidef01_bd01/viseme.milo")
+      (gender kGenderFemale)
+      (playable FALSE)
+      (outfits
+         (sade01
+            (model
+               "char/main/dancer/skeleton01_bd01.milo")
+            (rival_outfit mo03)
+            (backup_rival_outfit mo04)
+            (backup_dancers dcoy02)
+            (screen_name crew_look))
+         (sade02
+            (model
+               "char/main/dancer/skeleton01_bd01.milo")
+            (rival_outfit mo03)
+            (backup_rival_outfit mo04)
+            (backup_dancers dcoy02)
+            (screen_name street_style)))))
 #ifndef _SHIP
 #define MILO_VENUES
 (beachfront beachfront_takehome yacht yacht_takehome minigolf minigolf_takehome subway subwaytakehome skyscraper skyscrapertakehome mountainbasesun mountainbasesuntakehome mountainbase mountainbase_takehome dci rollerrink streetside houseparty dclive throneroom bid glitterati arttest default powerstation highschool boardwalk boardwalktakehome bridge rooftop mansion forest)
@@ -2675,62 +2733,66 @@
    (cyn03 cyn03)
    (doll01 doll01)
    (doll02 doll02)
-   (bird01 bird01))
+   (bird01 bird01)
+   (miku01_bd01 miku01_bd01)
+   (miku01_bd02 miku01_bd02)
+   (teto01_bd01 teto01_bd01)
+   (teto01_bd02 teto01_bd02))
 #define CREWS
 ((crew01
-      (characters emilia bodie riptidebackup riptidealt)
-      (venue dclive)
+      (characters emilia dc1_emilia bodie riptidebackup riptidealt)
+      (venue beachfront)
       (colors
          (1.0 9.0e-2 0.14)
          (0.75 0.7 0.74)))
    (crew02
-      (characters mo glitch hidefbackup hidefalt)
-      (venue streetside)
+      (characters mo dc1_mo glitch hidefbackup hidefalt)
+      (venue subway)
       (colors
          (0.0 0.83 7.0e-3)
          (0.97 0.0 0.94)))
    (crew03
-      (characters taye lilt flashfwdbackup flashfwdalt)
-      (venue houseparty)
+      (characters taye dc1_sade lilt flashfwdbackup flashfwdalt)
+      (venue minigolf)
       (colors
          (1.0 0.77 9.0e-2)
          (0.76 1.0 7.0e-2)))
    (crew04
-      (characters aubrey angel lushbackup lushalt)
-      (venue rollerrink)
+      (characters aubrey dc1_aubrey angel dc1_angel lushbackup lushalt)
+      (venue yacht)
       (colors
          (0.12 8.0e-2 0.76)
          (1.0 0.16 0.27)))
    (crew05
       (characters jaryn kerith glitteratibackup glitteratialt)
-      (venue dci)
+      (venue skyscraper)
       (is_hidden FALSE)
       (colors
          (1.0 0.88 0.74)
          (0.77 0.0 0.4)))
    (crew06
-      (characters dare maccoy)
-      (venue dci)
+      (characters dare dc1_kyoko maccoy dc1_maccoy)
+      (venue mountainbasesun)
       (is_hidden FALSE)
       (colors
          (1.0 0.0 0.57)
          (0.37 0.93 1.0)))
    (crew07
-      (characters tan dc1_robot oblio tanarmy_bd03 tanarmy_bd04)
-      (venue throneroom)
+      (characters dc1_robot oblio dc1_oblio tan tanarmy_bd03 tanarmy_bd04)
+      (venue mountainbase)
       (colors
          (0.78 0.19 0.45)
          (0.33 0.19 0.75)))
    (crew08
-      (characters ninjaman ninjawoman ninja_bd01 ninja_bd02)
-      (venue dci)
+      (characters ninjaman dc1_ninja ninjawoman ninja_bd01 ninja_bd02)
+      (venue mountainbasesuntakehome)
       (is_hidden FALSE)
       (colors
          (4.0e-2 0.77 0.65)
          (0.95 0.37 0.42)))
    (crew09
       (characters iconmanblue iconmanpink iconman iconman_bd01 iconman_bd02)
-      (venue dci)
+      (venue mountainbasesun)
       (is_hidden FALSE)
       (colors
          (0.25 0.24 0.17)
@@ -2775,9 +2837,39 @@
       (venue dclive)
       (colors
          (1.0 9.0e-2 0.14)
-         (0.75 0.7 0.74))))
+         (0.75 0.7 0.74)))
+   (crew13
+      (characters john paul george ringo)
+      (venue rooftop)
+      (colors
+         (0.12 8.0e-2 0.76)
+         (1.0 0.16 0.27)))
+   (crew14
+      (characters ddronen ddronev doll cyn)
+      (venue mansion)
+      (colors
+         (0.12 8.0e-2 0.76)
+         (1.0 0.16 0.27)))
+   (crew15
+      (characters miku teto)
+      (venue dclive)
+      (colors
+         (0.99 0.0 0.56)
+         (0.36 0.93 1.0)))
+   (crew16
+      (characters walter heavy helicopter)
+      (venue dclive)
+      (colors
+         (0.99 0.0 0.56)
+         (0.36 0.93 1.0)))
+   (crew17
+      (characters grim femsinger)
+      (venue dclive)
+      (colors
+         (0.99 0.0 0.56)
+         (0.36 0.93 1.0))))
 #define SELECTABLE_CREWS
-(bd_dancers crew01 crew03 crew04 crew02 crew05 crew11 crew07 crew06 crew08 crew09 crew10)
+(bd_dancers crew01 crew03 crew04 crew02 crew05 crew11 crew07 crew06 crew08 crew09 crew10 crew13 crew14 crew15 crew16 crew17)
 #define CHARCLIP_SKELETONS
 (male female ricardo chanel devin frenchy marcos male_turbo female_turbo spikey nick kunle torey)
 #define kAccomplishmentTypeUnique
