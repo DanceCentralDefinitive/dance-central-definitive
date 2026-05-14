@@ -690,14 +690,14 @@
                "char/main/dancer/dare04.milo")
             (rival_outfit lima05)
             (backup_rival_outfit lima05)
-            (backup_dancers flashfwd02)
+            (backup_dancers dcoy02)
             (screen_name dc_classic))
          (dare06
             (model
                "char/main/dancer/dare06.milo")
             (rival_outfit lima05)
             (backup_rival_outfit lima05)
-            (backup_dancers flashfwd02)
+            (backup_dancers dcoy02)
             (screen_name under_control))))
    (maccoy
       (viseme
@@ -710,14 +710,14 @@
                "char/main/dancer/maccoy04.milo")
             (rival_outfit lilt01)
             (backup_rival_outfit lilt04)
-            (backup_dancers hidef02)
+            (backup_dancers dcoy01)
             (screen_name dc_classic))
          (maccoy06
             (model
                "char/main/dancer/maccoy06.milo")
             (rival_outfit lilt01)
             (backup_rival_outfit lilt04)
-            (backup_dancers hidef02)
+            (backup_dancers dcoy01)
             (screen_name under_control))))
    (oblio
       (viseme
