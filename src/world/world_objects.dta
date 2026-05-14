@@ -1091,10 +1091,10 @@
 (RndDir
    (types
       (chars
-         (enter WORLD_SETUP_CHARACTERS))
+         (enter DX_NO_MENU_MOTIONBLUR WORLD_SETUP_CHARACTERS))
       (lighting
          (editor)
-         (enter WORLD_SETUP_CHARACTERS))
+         (enter DX_NO_MENU_MOTIONBLUR WORLD_SETUP_CHARACTERS))
       (clip_test
          (song '')
          (editor
