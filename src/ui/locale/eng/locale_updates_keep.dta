@@ -7,10 +7,29 @@
  "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nBase Modifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @noqenji on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems. \nContributions by The W (LiningDesert753) & NORXND. More info in Definitive Options")
 (legal_e3
  "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nModifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @noqenji on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems.")
-(autosave_warning_msg
- "This game uses an autosave system. Whenever you see this icon, the game is saving. But with this mod, autosaving is no longer complete lie, and was fixed, Uh, subscribe to @noqenji on YT :). But enjoy the mod!")
 
 ;Backup dancer's names
+(lushalt "lu$h's Retro Fitted")
+(lushalt_title "lu$h's retro fitted")
+(lushbackup "lu$h's crew look")
+(lushbackup_title "lu$h's Crew Look")
+(riptidealt "riptide's Retro Fitted")
+(riptidealt_title "riptide's retro fitted")
+(riptidebackup "riptide's crew look")
+(riptidebackup_title "riptide's Crew Look")
+(hidefalt "hi-def's Retro Fitted")
+(hidefalt_title "hi-def's retro fitted")
+(hidefbackup "hi-def's crew look")
+(hidefbackup_title "hi-def's Crew Look")
+(flashfwdalt "flash4wrd's Retro Fitted")
+(flashfwdalt_title "flash4wrd's Retro fitted")
+(flashfwdbackup "flash4wrd's Crew Look")
+(flashfwdbackup_title "flash4wrd's Crew Look")
+(glitteratialt "glitterati's Haute Blooded")
+(glitteratialt_title "glitterati's Haute Blooded")
+(glitteratibackup "glitterati's Crew Look")
+(glitteratibackup_title "glitterati's Crew Look")
+
 (flashfwd_bd01 "Flash BD R (Crew)")
 (flashfwd_bd02 "Flash BD L (Crew)")
 (flashfwd_bd03 "Flash BD R (Retro)")
@@ -248,6 +267,10 @@
 (doll_tile "Doll")
 (cyn "Cyn")
 (cyn_title "Cyn")
+
+;crews
+(bd_dancers "Skeletons")
+(bd_dancers_title "Skeletons")
 
 ;DC3 Venue Names
 (glitterati "Penthaüs (Cutscene)")
