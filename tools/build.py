@@ -281,7 +281,7 @@ def prepare_ninja(config):
 
     ninja.rule(
         "sfreq",
-        f"$superfreq png2tex -l error $miloVersion --platform $platform $in $out",
+        f"$superfreq png2tex $miloVersion --platform $platform $in $out",
         description="SFREQ $in",
     )
     ninja.rule("dtab_serialize", "$dtab -b $in $out", description="DTAB SER $in")
