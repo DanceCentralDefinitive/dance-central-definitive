@@ -32,7 +32,9 @@
       {dx_options_panel_provider.hnp append_nav_item}
       {dx_options_panel_provider.hnp set_label 0 "Autoplay"}
       {dx_options_panel_provider.hnp set_label 1 "Buffer Display / Preview"}
-      {dx_options_panel_provider.hnp set_label 2 "Info / About"}
+	  {dx_options_panel_provider.hnp set_label 2 "Toggle Post Processing"}
+	  {dx_options_panel_provider.hnp set_label 3 "Unlock All Content"}
+      {dx_options_panel_provider.hnp set_label 4 "Info / About"}
       ; {dx_options_panel_provider.hnp set_label 2 "Pack Friends Token"}
       ; {dx_options_panel_provider.hnp set_label 3 "Show Friends Token"}
       ; {dx_options_panel_provider.hnp set_label 4 "Info / About"}
@@ -97,7 +99,13 @@
          ;       }
          ;    }
          ; )
-         ("Info / About"
+         ("Toggle Post Processing"
+            {rnd toggle_all_postprocs}
+         )
+		 ("Unlock All Content"
+            {ui goto_screen unlock_all_screen}
+         )
+		 ("Info / About"
             {ui goto_screen dx_info_screen}
          )
       }

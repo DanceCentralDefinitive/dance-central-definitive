@@ -260,9 +260,14 @@
 (grim_title "Grim Ripper")
 (femsinger "Female Singer")
 (femsinger_title "Female Singer")
+(helicopter "Helicopter")
+(helicopter_title "Helicopter")
 (freddy "Freddy")
 (freddy_title "Freddy")
+(heavy "Heavy")
 (heavy_title "Heavy")
+(sniper "Sniper")
+(sniper_title "Sniper")
 (doll "Doll")
 (doll_tile "Doll")
 (cyn "Cyn")
@@ -291,13 +296,31 @@
 (mountainbase "The Airship (Dark)")
 (mountainbase_title "The Airship (Dark)")
 
+;DC2 Takehome Venue Names
+(beachfront_takehome "High Tide (Takehome)")
+(beachfront_takehome_title "High Tide (Takehome)")
+(minigolf_takehome "Tee Off (Takehome)")
+(yacht_takehome "Set Adrift (Takehome)")
+(subwaytakehome "Lowdown (Takehome)")
+(skyscrapertakehome "Penthaüs (Takehome)")
+(mountainbasesuntakehome "The Airship (Takehome)")
+(mountainbase_takehome "The Airship (Dark) (Takehome)")
+(mountainbase_takehome_title "The Airship (Dark) (Takehome)")
+(minigolf_takehome_title "Tee Off (Takehome)")
+(yacht_takehome_title "Set Adrift (Takehome)")
+(subwaytakehome_title "Lowdown (Takehome)")
+(skyscrapertakehome_title "Penthaüs (Takehome)")
+(mountainbasesuntakehome_title "The Airship (Takehome)")
+
 ;DC1 Venue Names
 (boardwalk "The Planks")
+(boardwalktakehome "The Planks (Takehome)")
 (bridge "Gridlock")
 (rooftop "The Roost")
 (mansion "Tan's Estate")
 (forest "Midnight Mayhem")
 (boardwalk_title "The Planks")
+(boardwalktakehome_title "The Planks (Takehome)")
 (bridge_title "Gridlock")
 (rooftop_title "The Roost")
 (mansion_title "Tan's Estate")
@@ -391,3 +414,9 @@
 (jackson "Michael Jackson: The Experience")
 (blackeyedpeas "The Black Eyed Peas Experience")
 (hiphopdance "The Hip-Hop Dance Experience")
+
+;DC Mods/Projects
+(neon "Dance Central Neon") ;Endri's cancelled project
+(retroverse "Dance Central: Retroverse") ;CONINJA's project
+(ham3_def "Dance Central 3 Definitive") ;This project
+(ham2_def "Dance Central 2 Definitive") ;DC2 Definitive

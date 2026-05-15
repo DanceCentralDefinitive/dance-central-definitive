@@ -2161,7 +2161,7 @@
                "char/main/dancer/miku01.milo")
             (rival_outfit teto01)
             (backup_rival_outfit aubrey02)
-            (backup_dancers miku01)
+            (backup_dancers teto01)
             (screen_name crew_look))))
    (teto
       (gender kGenderFemale)
@@ -2172,7 +2172,7 @@
                "char/main/dancer/teto01.milo")
             (rival_outfit miku01)
             (backup_rival_outfit aubrey02)
-            (backup_dancers teto01)
+            (backup_dancers miku01)
             (screen_name crew_look))))
    (ddronen
       (gender kGenderMale)
@@ -2347,7 +2347,7 @@
             (screen_name dci_agent))))
    (teto01_bd01
       (viseme
-         "char/main/dancer/hidef01_bd02/viseme.milo")
+         "char/main/dancer/robot01/viseme.milo")
       (gender kGenderMale)
       (playable FALSE)
       (outfits
@@ -2360,7 +2360,7 @@
             (screen_name dci_agent))))
    (teto01_bd02
       (viseme
-         "char/main/dancer/hidef01_bd02/viseme.milo")
+         "char/main/dancer/robot01/viseme.milo")
       (gender kGenderMale)
       (playable FALSE)
       (outfits
