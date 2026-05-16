@@ -2,11 +2,11 @@
 
 All notable changes to this project are documented here.
 
-## [v0.0.6] - 2026-05-16
+## [v0.0.5] - 2026-05-16
 
 ### Fixed
 
-- songs, and characters folder, including macros.dta has be slightly updated
+- songs, and characters folder, including macros.dta has been slightly updated
 
 ## [v0.0.4] - 2026-05-12
 
