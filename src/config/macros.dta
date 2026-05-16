@@ -166,15 +166,15 @@
          (dc1_angel01
             (model
                "char/main/dancer/dc1_angel01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_oblio01)
+            (backup_rival_outfit dc1_oblio01)
             (backup_dancers angel01)
             (screen_name crew_look))
          (dc1_angel02
             (model
                "char/main/dancer/dc1_angel02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_oblio02)
+            (backup_rival_outfit dc1_oblio01)
             (backup_dancers angel02)
             (screen_name street_style))))
    (dc1_aubrey
@@ -186,15 +186,15 @@
          (dc1_aubrey01
             (model
                "char/main/dancer/dc1_aubrey01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_emilia01)
+            (backup_rival_outfit dc1_emilia01)
             (backup_dancers aubrey01)
             (screen_name crew_look))
          (dc1_aubrey02
             (model
                "char/main/dancer/dc1_aubrey02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_emilia02)
+            (backup_rival_outfit dc1_emilia02)
             (backup_dancers aubrey02)
             (screen_name street_style))))
    (dc1_kyoko
@@ -206,15 +206,15 @@
          (dc1_kyoko01
             (model
                "char/main/dancer/dc1_kyoko01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_sade01)
+            (backup_rival_outfit dc1_sade01)
             (backup_dancers dcoy02)
             (screen_name crew_look))
          (dc1_kyoko02
             (model
                "char/main/dancer/dc1_kyoko02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_sade02)
+            (backup_rival_outfit dc1_sade02)
             (backup_dancers dcoy02)
             (screen_name street_style))))
    (dc1_maccoy
@@ -226,15 +226,15 @@
          (dc1_maccoy01
             (model
                "char/main/dancer/dc1_maccoy01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_robot01)
+            (backup_rival_outfit dc1_robot01)
             (backup_dancers dcoy01)
             (screen_name crew_look))
          (dc1_maccoy02
             (model
                "char/main/dancer/dc1_maccoy02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_robot02)
+            (backup_rival_outfit dc1_robot02)
             (backup_dancers dcoy01)
             (screen_name street_style))))
    (dc1_emilia
@@ -246,29 +246,29 @@
          (dc1_emilia01
             (model
                "char/main/dancer/dc1_emilia01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_aubrey01)
+            (backup_rival_outfit dc1_aubrey01)
             (backup_dancers emilia01)
             (screen_name crew_look))
          (dc1_emilia02
             (model
                "char/main/dancer/dc1_emilia02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_aubrey02)
+            (backup_rival_outfit dc1_aubrey02)
             (backup_dancers emilia02)
             (screen_name street_style))
          (dc1_emilia03
             (model
                "char/main/dancer/dc1_emilia03.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit skeleton01)
+            (backup_rival_outfit skeleton01)
             (backup_dancers emilia01)
             (screen_name crew_look))
          (dc1_emilia04
             (model
                "char/main/dancer/dc1_emilia04.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit skeleton01)
+            (backup_rival_outfit skeleton01)
             (backup_dancers emilia02)
             (screen_name street_style))))
    (dc1_oblio
@@ -280,22 +280,22 @@
          (dc1_oblio01
             (model
                "char/main/dancer/dc1_oblio01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_angel01)
+            (backup_rival_outfit dc1_angel01)
             (backup_dancers robot02)
             (screen_name crew_look))
          (dc1_oblio02
             (model
                "char/main/dancer/dc1_oblio02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_angel02)
+            (backup_rival_outfit dc1_angel02)
             (backup_dancers robot01)
             (screen_name street_style))
          (dc1_oblio03
             (model
                "char/main/dancer/dc1_oblio03.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_angel01)
+            (backup_rival_outfit dc1_angel01)
             (backup_dancers robot02)
             (screen_name street_style))))
    (dc1_mo
@@ -307,22 +307,22 @@
          (dc1_mo01
             (model
                "char/main/dancer/dc1_mo01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_sade01)
+            (backup_rival_outfit dc1_sade01)
             (backup_dancers hidef01)
             (screen_name crew_look))
          (dc1_mo02
             (model
                "char/main/dancer/dc1_mo02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_sade02)
+            (backup_rival_outfit dc1_sade02)
             (backup_dancers hidef01)
             (screen_name street_style))
          (dc1_mo03
             (model
                "char/main/dancer/dc1_mo03.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_sade01)
+            (backup_rival_outfit dc1_sade01)
             (backup_dancers hidef01)
             (screen_name street_style))))
    (dc1_sade
@@ -334,15 +334,15 @@
          (dc1_sade01
             (model
                "char/main/dancer/dc1_sade01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_mo01)
+            (backup_rival_outfit dc1_mo01)
             (backup_dancers sade01)
             (screen_name crew_look))
          (dc1_sade02
             (model
                "char/main/dancer/dc1_sade02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_mo02)
+            (backup_rival_outfit dc1_mo02)
             (backup_dancers sade02)
             (screen_name street_style))))
    (dc1_ninja
@@ -354,8 +354,8 @@
          (dc1_ninja01
             (model
                "char/main/dancer/dc1_ninja01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_robot01)
+            (backup_rival_outfit dc1_robot01)
             (backup_dancers ninja01)
             (screen_name crew_look))))
    (dc1_robot
@@ -367,15 +367,15 @@
          (dc1_robot01
             (model
                "char/main/dancer/dc1_robot01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_ninja01)
+            (backup_rival_outfit dc1_ninja01)
             (backup_dancers robot01)
             (screen_name crew_look))
          (dc1_robot02
             (model
                "char/main/dancer/dc1_robot02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
+            (rival_outfit dc1_ninja01)
+            (backup_rival_outfit dc1_ninja01)
             (backup_dancers robot02)
             (screen_name street_style))))
    (emilia
