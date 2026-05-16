@@ -272,6 +272,8 @@
 (doll_tile "Doll")
 (cyn "Cyn")
 (cyn_title "Cyn")
+(walter "Walter")
+(walter_title "Walter")
 
 ;crews
 (bd_dancers "Skeletons")
