@@ -151,6 +151,11 @@
 (iconmanpink01 "Frenchy")
 (iconmanblue02 "Takehome Beta")
 (iconmanpink02 "Takehome Beta")
+(iconman01 "Mini Frenchy")
+(iconman02 "Spawns Backwards")
+(ninjawoman01 "Crew Look")
+(ninjawoman02 "TakeHome Beta")
+(ninjaman01 "Crew Look")
 (dc1_angel_title "Angel (Classic)")
 (dc1_aubrey_title "Aubrey (Classic)")
 (dc1_maccoy_title "Maccoy (Classic)")
@@ -166,6 +171,11 @@
 (iconmanpink01_title "Frenchy")
 (iconmanblue02_title "Takehome Beta")
 (iconmanpink02_title "Takehome Beta")
+(iconman01_title "Mini Frenchy")
+(iconman02_title "Spawns Backwards")
+(ninjawoman01_title "Crew Look")
+(ninjawoman02_title "TakeHome Beta")
+(ninjaman01_title "Crew Look")
 
 (dc1_angel01 "Chill")
 (dc1_angel02 "Show Off")
@@ -285,8 +295,7 @@
 
 
 ;song sources
-(dlc "Downloaded Content")
-(dlc_title "Downloaded Content")
+(DLC "Downloaded Content")
 
 ;Dance Central games
 (ham1_viper "Dance Central Spotlight DLC (Legacy)")
