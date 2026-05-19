@@ -1,5 +1,5 @@
 {new OptionsPanel
-   dx_autoplay_panel
+   dx_modifiers_panel
    (file "../../../ui/options/options.milo")
    (focus right_hand.hnl)
    (focus_index 0)
@@ -8,20 +8,25 @@
    (offer_string "")
    (top_index 0)
    (back_token back)
-   (back_screen dx_modifiers_screen)
+   (back_screen dx_options_screen)
    (enter
       {platform_mgr add_sink $this (ui_changed)}
       {set [pending_show_keyboard] FALSE}
       {set [pending_purchase_offer] FALSE}
       {set [offer_string] ""}
-      {if {! {$this exists dx_autoplay_panel_provider.hnp}}
-         {new HamNavProvider dx_autoplay_panel_provider.hnp}
+      {if {! {$this exists dx_modifiers_panel_provider.hnp}}
+         {new HamNavProvider dx_modifiers_panel_provider.hnp}
       }
-      {dx_autoplay_panel_provider.hnp append_nav_item}
-      {dx_autoplay_panel_provider.hnp append_nav_item}
-      {dx_autoplay_panel_provider.hnp set_label 0 df_p1_auto}
-      {dx_autoplay_panel_provider.hnp set_label 1 df_p2_auto}
-      {right_hand.hnl set_provider dx_autoplay_panel_provider.hnp}
+      {dx_modifiers_panel_provider.hnp append_nav_item}
+      {dx_modifiers_panel_provider.hnp append_nav_item}
+	  {dx_modifiers_panel_provider.hnp append_nav_item}
+      {dx_modifiers_panel_provider.hnp append_nav_item}
+	  
+      {dx_modifiers_panel_provider.hnp set_label 0 definitive_autoplay}
+      {dx_modifiers_panel_provider.hnp set_label 1 definitive_bufferdisplaytoggle}
+	  {dx_modifiers_panel_provider.hnp set_label 2 definitive_unlockall}
+      {dx_modifiers_panel_provider.hnp set_label 3 definitive_pause_skele_loss}
+      {right_hand.hnl set_provider dx_modifiers_panel_provider.hnp}
       {right_hand.hnl scroll_to_index [focus_index] [top_index]}
    )
    (exit
@@ -32,13 +37,20 @@
    (poll SLIDE_RIGHT_LIST_ITEM)
    (NAV_SELECT_MSG
       {switch $name
-         (df_p1_auto
-            {set $dx_options_target_player 1}
-            {ui goto_screen dx_autoplay_diff_screen}
+         (definitive_autoplay
+            {ui goto_screen dx_autoplay_screen}
          )
-         (df_p2_auto
-            {set $dx_options_target_player 2}
-            {ui goto_screen dx_autoplay_diff_screen}
+         (definitive_bufferdisplaytoggle
+            {ui goto_screen dx_buffer_display_screen}
+         )
+         (definitive_postprocs_toggle
+            {rnd toggle_all_postprocs}
+         )
+		 (definitive_unlockall
+            {ui goto_screen unlock_all_screen}
+         )
+		 (definitive_pause_skele_loss
+            {ui goto_screen dx_pause_skele_loss_screen}
          )
       }
    )
@@ -73,9 +85,9 @@
 }
 
 {new HamScreen
-   dx_autoplay_screen
-   (panels meta background_panel dx_autoplay_panel)
-   (focus dx_autoplay_panel)
+   dx_modifiers_screen
+   (panels meta background_panel dx_modifiers_panel)
+   (focus dx_modifiers_panel)
    (back options_screen)
    (handle_global_commands TRUE)
    (enter {voice_input_panel activate_voice_context dx_options_screen})
@@ -83,7 +95,7 @@
       ($command)
       {switch $command
          BACRO
-         {dx_autoplay_panel select_right_list_token $command}
+         {dx_modifiers_panel select_right_list_token $command}
       }
    )
    (on_global_voice_command

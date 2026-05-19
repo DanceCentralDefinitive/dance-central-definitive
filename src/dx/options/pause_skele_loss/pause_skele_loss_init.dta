@@ -1,0 +1,4 @@
+
+#include ./pause_skele_loss_panel.dta
+
+{print "[dx-init]: options/pause_skele_loss: screens created"}

@@ -19,8 +19,8 @@
       }
       {dx_buffer_display_panel_provider.hnp append_nav_item}
       {dx_buffer_display_panel_provider.hnp append_nav_item}
-      {dx_buffer_display_panel_provider.hnp set_label 0 "Player 1 (Right)"}
-      {dx_buffer_display_panel_provider.hnp set_label 1 "Player 2 (Left)"}
+      {dx_buffer_display_panel_provider.hnp set_label 0 def_p1}
+      {dx_buffer_display_panel_provider.hnp set_label 1 def_p2}
       {right_hand.hnl set_provider dx_buffer_display_panel_provider.hnp}
       {right_hand.hnl scroll_to_index [focus_index] [top_index]}
    )
@@ -32,12 +32,12 @@
    (poll SLIDE_RIGHT_LIST_ITEM)
    (NAV_SELECT_MSG
       {switch $name
-         ("Player 1 (Right)"
+         (def_p1
             {set $depth_right {cursor_panel find depth_buffer_right.grp}}
             {$depth_right set_showing {! {$depth_right showing}}}
             {print "test"}
             )
-         ("Player 2 (Left)"
+         (def_p2
             {set $depth_left {cursor_panel find depth_buffer_left.grp}}
             {$depth_left set_showing {! {$depth_left showing}}}
             {print "test"}
