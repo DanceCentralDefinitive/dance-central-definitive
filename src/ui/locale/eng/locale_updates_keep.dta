@@ -7,6 +7,37 @@
  "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nBase Modifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @noqenji on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems. \nContributions by The W (LiningDesert753) & NORXND. More info in Definitive Options")
 (legal_e3
  "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nModifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @noqenji on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems.")
+ 
+ ;Definitive Settings locale
+(get_songs_placeholder "Downloading songs from Dance Central Definitive is not yet available.")
+(definitive_credits "Dance Central 3 Definitive - Main Repository: https://github.com/DanceCentralDefinitive/dance-central-definitive - Docs: https://dancecentraldefinitive.github.io/dance-central-definitive/ - Authors: noqenji, liningdesert753, NORXND, Special Thanks to MiloHax & the DCD Discord Server")
+
+(definitive_modifiers "Gameplay Modifiers")
+(definitive_pause_skele_loss "Spectator Settings")
+(definitive_autoplay "Autoplay Settings")
+(definitive_info "Info / About")
+(definitive_postprocs_toggle "Toggle Post-Processing Effects")
+(definitive_unlockall "Unlock All Content")
+(definitive_bufferdisplaytoggle "Buffer Display / Preview")
+
+	;Buffer Display toggle settings
+	(def_p1 "Toggle P1 Display")
+	(def_p2 "Toggle P2 Display")
+
+	;Autoplay Settings (Xenia/Non-Debug)
+	(df_p1_auto "Player 1 (Right)")
+	(df_p2_auto "Player 2 (Left)")
+	(auto_disable "Disable")
+	(auto_bad "Bad")
+	(auto_almost "Almost")
+	(auto_ok "Nice")
+	(auto_flawless "Flawless (Min)")
+	(auto_perfect "Flawless (Max)")
+	
+	;Spectator (Pause on Skeleton Loss) settings
+	(df_nopause_noflashcards "Enable Spectator")
+	(df_nopause_yesflashcards "Enable Spectator with Flashcards")
+	(df_yespause "Disable Spectator")
 
 ;Backup dancer's names
 (lushalt "lu$h's Retro Fitted")
