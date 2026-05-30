@@ -5965,6 +5965,7 @@
    (author "Harmonix")
    #endif)
 (weaponofchoice
+   (artist "Fatboy Slim ft. Bootsy Collins")
    (format 3)
    (rank 10)
    (gender kGenderMale)
@@ -6772,7 +6773,7 @@
 )
 
 (_turbotemplate
-	(artist "Harmonix (Missy Eliott)")
+	(artist "Harmonix (Missy Elliott)")
 	(name "Turbo Template (Lose Control)")
 	(album_name "Dance Central 2")
 	(game_origin ham2_dev)
@@ -6846,6 +6847,308 @@
 )
 
 ;Dance Central Spotlight Legacy Imports (No Freestyle DC1 DLC, Alternates for All DLC)
+(84cb_becauseofyou
+   (name "Because of You (Main)")
+   (artist "Ne-Yo")
+   (game_origin ham1_viper)
+)
+(cc8d_becauseofyou
+   (name "Because of You (Alternate)")
+   (artist "Ne-Yo")
+   (game_origin ham1_viper)
+)
+(af1f_breakyourheart
+   (name "Break Your Heart (Main)")
+   (artist "Taio Cruz")
+   (game_origin ham1_viper)
+)
+(fa01_breakyourheart
+   (name "Break Your Heart (Alternate)")
+   (artist "Taio Cruz")
+   (game_origin ham1_viper)
+)
+(ff9e_control
+   (name "Control (Main)")
+   (artist "Janet Jackson")
+   (game_origin ham1_viper)
+)
+(a528_control
+   (name "Control (Alternate)")
+   (artist "Janet Jackson")
+   (game_origin ham1_viper)
+)
+(1dc8_dance
+   (name "D.A.N.C.E. (Main)")
+   (artist "Justice")
+   (game_origin ham1_viper)
+)
+(3f35_dance
+   (name "D.A.N.C.E. (Alternate)")
+   (artist "Justice")
+   (game_origin ham1_viper)
+)
+(d0c6_disturbia
+   (name "Disturbia (Main)")
+   (artist "Rihanna")
+   (game_origin ham1_viper)
+)
+(7598_disturbia
+   (name "Disturbia (Alternate)")
+   (artist "Rihanna")
+   (game_origin ham1_viper)
+)
+(68d1_dontcha
+   (name "Don't Cha (Main)")
+   (artist "The Pussycat Dolls ft. Busta Rhymes")
+   (game_origin ham1_viper)
+)
+(4b08_dontcha
+   (name "Don't Cha (Alternate)")
+   (artist "The Pussycat Dolls ft. Busta Rhymes")
+   (game_origin ham1_viper)
+)
+(1837_fergalicious
+   (name "Fergalicious (Main)")
+   (artist "Fergie ft. will.i.am")
+   (game_origin ham1_viper)
+)
+(1def_fergalicious
+   (name "Fergalicious (Alternate)")
+   (artist "Fergie ft. will.i.am")
+   (game_origin ham1_viper)
+)
+(4f18_getbusy
+   (name "Get Busy (Main)")
+   (artist "Sean Paul")
+   (game_origin ham1_viper)
+)
+(4494_getbusy
+   (name "Get Busy (Alternate)")
+   (artist "Sean Paul")
+   (game_origin ham1_viper)
+)
+(b793_getitshawty
+   (name "Get It Shawty (Main)")
+   (artist "Lloyd")
+   (game_origin ham1_viper)
+)
+(8f64_getitshawty
+   (name "Get It Shawty (Alternate)")
+   (artist "Lloyd")
+   (game_origin ham1_viper)
+)
+(0423_getup
+   (name "Get Up (I Feel Like Being a) Sex Machine, Pt. 1 (Main)")
+   (artist "James Brown")
+   (game_origin ham1_viper)
+)
+(8869_getup
+   (name "Get Up (I Feel Like Being a) Sex Machine, Pt. 1 (Alternate)")
+   (artist "James Brown")
+   (game_origin ham1_viper)
+)
+(21b9_girlsboys
+   (name "Girls & Boys (Main)")
+   (artist "Blur")
+   (game_origin ham1_viper)
+)
+(acdb_girlsboys
+   (name "Girls & Boys (Alternate)")
+   (artist "Blur")
+   (game_origin ham1_viper)
+)
+(bed4_heardemall
+   (name "Heard 'Em All (Main)")
+   (artist "Amerie")
+   (game_origin ham1_viper)
+)
+(3e57_heardemall
+   (name "Heard 'Em All (Alternate)")
+   (artist "Amerie")
+   (game_origin ham1_viper)
+)
+(f39e_hollabackgirl
+   (name "Hollaback Girl (Main)")
+   (artist "Gwen Stefani")
+   (game_origin ham1_viper)
+)
+(1c3d_hollabackgirl
+   (name "Hollaback Girl (Alternate)")
+   (artist "Gwen Stefani")
+   (game_origin ham1_viper)
+)
+(c253_igottafeeling
+   (name "I Gotta Feeling (Main)")
+   (artist "Black Eyed Peas")
+   (game_origin ham1_viper)
+)
+(695c_igottafeeling
+   (name "I Gotta Feeling (Alternate)")
+   (artist "Black Eyed Peas")
+   (game_origin ham1_viper)
+)
+(b56c_informer
+   (name "Informer (Main)")
+   (artist "Snow")
+   (game_origin ham1_viper)
+)
+(c43d_informer
+   (name "Informer (Alternate)")
+   (artist "Snow")
+   (game_origin ham1_viper)
+)
+(5198_lapdance
+   (name "Lapdance (Main)")
+   (artist "N.E.R.D. ft. Lee Harvey & Vita")
+   (game_origin ham1_viper)
+)
+(3206_lapdance
+   (name "Lapdance (Alternate)")
+   (artist "N.E.R.D. ft. Lee Harvey & Vita")
+   (game_origin ham1_viper)
+)
+(7fef_leanwititrockwitit
+   (name "Lean Wit It, Rock Wit It (Main)")
+   (artist "Dem Franchize Boyz ft. Peanut and Charlay")
+   (game_origin ham1_viper)
+)
+(335d_leanwititrockwitit
+   (name "Lean Wit It, Rock Wit It (Alternate)")
+   (artist "Dem Franchize Boyz ft. Peanut and Charlay")
+   (game_origin ham1_viper)
+)
+(a300_planetrock
+   (name "Planet Rock (Original 12\q Version) (Main)")
+   (artist "Afrika Bambaataa & The Soul Sonic Force")
+   (game_origin ham1_viper)
+)
+(ffe9_planetrock
+   (name "Planet Rock (Original 12\q Version) (Alternate)")
+   (artist "Afrika Bambaataa & The Soul Sonic Force")
+   (game_origin ham1_viper)
+)
+(b70e_sayaah
+   (name "Say Aah (Main)")
+   (artist "Trey Songz ft. Fabolous")
+   (game_origin ham1_viper)
+)
+(50a9_sayaah
+   (name "Say Aah (Alternate)")
+   (artist "Trey Songz ft. Fabolous")
+   (game_origin ham1_viper)
+)
+(ad0d_straightup
+   (name "Straight Up (Main)")
+   (artist "Paula Abdul")
+   (game_origin ham1_viper)
+)
+(951c_straightup
+   (name "Straight Up (Alternate)")
+   (artist "Paula Abdul")
+   (game_origin ham1_viper)
+)
+(12ef_superfreak
+   (name "Super Freak (Main)")
+   (artist "Rick James")
+   (game_origin ham1_viper)
+)
+(526e_superfreak
+   (name "Super Freak (Alternate)")
+   (artist "Rick James")
+   (game_origin ham1_viper)
+)
+(a18c_temperature
+   (name "Temperature (Main)")
+   (artist "Sean Paul")
+   (game_origin ham1_viper)
+)
+(65ce_temperature
+   (name "Temperature (Alternate)")
+   (artist "Sean Paul")
+   (game_origin ham1_viper)
+)
+(55c5_temptedtotouch
+   (name "Tempted to Touch (Main)")
+   (artist "Rupee")
+   (game_origin ham1_viper)
+)
+(57ea_temptedtotouch
+   (name "Tempted to Touch (Alternate)")
+   (artist "Rupee")
+   (game_origin ham1_viper)
+)
+(c6f6_thewayiare
+   (name "The Way I Are (Main)")
+   (artist "Timbaland ft. Keri Hilson and D.O.E.")
+   (game_origin ham1_viper)
+)
+(d77b_thewayiare
+   (name "The Way I Are (Alternate)")
+   (artist "Timbaland ft. Keri Hilson and D.O.E.")
+   (game_origin ham1_viper)
+)
+(0e3b_turninmeon
+   (name "Turnin Me On (Main)")
+   (artist "Keri Hilson ft. Lil' Wayne")
+   (game_origin ham1_viper)
+)
+(97fc_turninmeon
+   (name "Turnin Me On (Alternate)")
+   (artist "Keri Hilson Lil' Wayne")
+   (game_origin ham1_viper)
+)
+(c13f_werunthis
+   (name "We Run This (Main)")
+   (artist "Missy Elliott")
+   (game_origin ham1_viper)
+)
+(e866_werunthis
+   (name "We Run This (Alternate)")
+   (artist "Missy Elliott")
+   (game_origin ham1_viper)
+)
+(20ec_weaponofchoice
+   (name "Weapon of Choice (Main)")
+   (artist "Fatboy Slim ft. Bootsy Collins")
+   (rank 10)
+   (game_origin ham1_viper)
+)
+(f26e_weaponofchoice
+   (name "Weapon of Choice (Alternate)")
+   (artist "Fatboy Slim ft. Bootsy Collins")
+   (game_origin ham1_viper)
+)
+(4020_whoomp
+   (name "Whoomp! (There It Is) (Main)")
+   (artist "Tag Team")
+   (game_origin ham1_viper)
+)
+(cd19_whoomp
+   (name "Whoomp! (There It Is) (Alternate)")
+   (artist "Tag Team")
+   (game_origin ham1_viper)
+)
+(c344_wildthing
+   (name "Wild Thing (Main)")
+   (artist "Tone Lōc")
+   (game_origin ham1_viper)
+)
+(6fd4_wildthing
+   (name "Wild Thing (Alternate)")
+   (artist "Tone Lōc")
+   (game_origin ham1_viper)
+)
+(9bee_wordup
+   (name "Word Up! (Main)")
+   (artist "Cameo")
+   (game_origin ham1_viper)
+)
+(e9be_wordup
+   (name "Word Up! (Alternate)")
+   (artist "Cameo")
+   (game_origin ham1_viper)
+)
+
 (weaponofchoice_viper
 	(name "Weapon Of Choice (Old)")
 	(game_origin ham1_viper)
