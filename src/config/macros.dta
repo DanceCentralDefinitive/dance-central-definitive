@@ -1294,13 +1294,7 @@
             (backup_rival_outfit mo04)
             (backup_dancers skeleton01)
             (screen_name dci_agent))
-         (ninja02_bd01
-            (model
-               "char/main/backup/ninja02_bd01.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
-            (backup_dancers skeleton01)
-            (screen_name dci_agent))))
+         ))
    (ninja_bd02
       (viseme
          "char/main/dancer/ninja01_bd02/viseme.milo")
@@ -1314,13 +1308,7 @@
             (backup_rival_outfit mo04)
             (backup_dancers skeleton01)
             (screen_name dci_agent))
-         (ninja02_bd02
-            (model
-               "char/main/backup/ninja02_bd02.milo")
-            (rival_outfit mo03)
-            (backup_rival_outfit mo04)
-            (backup_dancers skeleton01)
-            (screen_name dci_agent))))
+			))
    (riptide_bd01
       (viseme
          "char/main/dancer/riptide01_bd01/viseme.milo")
