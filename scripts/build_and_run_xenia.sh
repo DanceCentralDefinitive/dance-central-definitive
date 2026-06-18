@@ -1,0 +1,1 @@
+scripts/build.sh --debug --clean && rsync -a out/ xenia/game/ && ./xenia/xenia.AppImage ./xenia/game/deluxe_debug.xex --debug
