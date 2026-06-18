@@ -7,6 +7,37 @@
  "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nBase Modifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @noqenji on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems. \nContributions by The W (LiningDesert753) & NORXND. More info in Definitive Options")
 (legal_e3
  "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nModifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @noqenji on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems.")
+ 
+ ;Definitive Settings locale
+(get_songs_placeholder "Downloading songs from Dance Central Definitive is not yet available.")
+(definitive_credits "Dance Central 3 Definitive - Main Repository: https://github.com/DanceCentralDefinitive/dance-central-definitive - Docs: https://dancecentraldefinitive.github.io/dance-central-definitive/ - Authors: noqenji, liningdesert753, NORXND, Special Thanks to MiloHax & the DCD Discord Server")
+
+(definitive_modifiers "Gameplay Modifiers")
+(definitive_pause_skele_loss "Spectator Settings")
+(definitive_autoplay "Autoplay Settings")
+(definitive_info "Info / About")
+(definitive_postprocs_toggle "Toggle Post-Processing Effects")
+(definitive_unlockall "Unlock All Content")
+(definitive_bufferdisplaytoggle "Buffer Display / Preview")
+
+	;Buffer Display toggle settings
+	(def_p1 "Toggle P1 Display")
+	(def_p2 "Toggle P2 Display")
+
+	;Autoplay Settings (Xenia/Non-Debug)
+	(df_p1_auto "Player 1 (Right)")
+	(df_p2_auto "Player 2 (Left)")
+	(auto_disable "Disable")
+	(auto_bad "Bad")
+	(auto_almost "Almost")
+	(auto_ok "Nice")
+	(auto_flawless "Flawless (Min)")
+	(auto_perfect "Flawless (Max)")
+	
+	;Spectator (Pause on Skeleton Loss) settings
+	(df_nopause_noflashcards "Enable Spectator")
+	(df_nopause_yesflashcards "Enable Spectator with Flashcards")
+	(df_yespause "Disable Spectator")
 
 ;Backup dancer's names
 (lushalt "lu$h's Retro Fitted")
@@ -120,6 +151,11 @@
 (iconmanpink01 "Frenchy")
 (iconmanblue02 "Takehome Beta")
 (iconmanpink02 "Takehome Beta")
+(iconman01 "Mini Frenchy")
+(iconman02 "Spawns Backwards")
+(ninjawoman01 "Crew Look")
+(ninjawoman02 "TakeHome Beta")
+(ninjaman01 "Crew Look")
 (dc1_angel_title "Angel (Classic)")
 (dc1_aubrey_title "Aubrey (Classic)")
 (dc1_maccoy_title "Maccoy (Classic)")
@@ -135,6 +171,11 @@
 (iconmanpink01_title "Frenchy")
 (iconmanblue02_title "Takehome Beta")
 (iconmanpink02_title "Takehome Beta")
+(iconman01_title "Mini Frenchy")
+(iconman02_title "Spawns Backwards")
+(ninjawoman01_title "Crew Look")
+(ninjawoman02_title "TakeHome Beta")
+(ninjaman01_title "Crew Look")
 
 (dc1_angel01 "Chill")
 (dc1_angel02 "Show Off")
@@ -185,95 +226,9 @@
 (dc1_robot01_title "2.0")
 (dc1_robot02_title "Dressy")
 
-;Beatles Outfits & Names
-(john01_title "Ed Sullivan Show")
-(john02_title "Walrus")
-(ringo01_title "Ed Sullivan Show")
-(ringo02_title "Lonely Hearts Club")
-(paul01_title "Ed Sullivan Show")
-(paul02_title "Yellow Submarine")
-(george01_title "Cavern")
-(george02_title "68'")
-(john01 "Ed Sullivan Show")
-(john02 "Walrus")
-(ringo01 "Ed Sullivan Show")
-(ringo02 "Lonely Hearts Club")
-(paul01 "Ed Sullivan Show")
-(paul02 "Yellow Submarine")
-(george01 "Cavern")
-(george02 "68'")
-
-;Miku & Teto's Outfits (technically unused until further notice)
-(miku01 "Crew Look")
-(teto01 "Crew Look")
-(miku01_title "Crew Look")
-(teto01_title "Crew Look")
-
-;Dissasembly Drones' Outfits
-(ddronen01 "Crew Look")
-(ddronen01_title "Crew Look")
-(ddronen02 "Prom Outfit")
-(ddronen02_title "Prom Outfit")
-(ddronen03 "Manor Outfit")
-(ddronen03_title "Manor Outfit")
-(ddronev01 "Crew Look")
-(ddronev01_title "Crew Look")
-(ddronev02 "Prom Outfit")
-(ddronev02_title "Prom Outfit")
-(ddronev03 "Manor Outfit")
-(ddronev03_title "Manor Outfit")
-
-;doll
-(doll01 "Crew Look")
-(doll01_title "Crew Look")
-(doll03 "Prom Outfit")
-(doll03_title "Prom Outfit")
-
-;TF2 Outfits
-(heavy01 "Reliable Excavation Demolition")
-(heavy02 "Builders League United")
-(heavy01_title "Reliable Excavation Demolition")
-(heavy02_title "Builders League United")
-(sniper01 "Reliable Excavation Demolition")
-(sniper02 "Builders League United")
-(sniper01_title "Reliable Excavation Demolition")
-(sniper02_title "Builders League United")
-
-;Custom Character Names
-(ddronen "SD-N")
-(ddronev "SD-V")
-(miku "Miku")
-(teto "Teto")
-(john "John")
-(ringo "Ringo")
-(paul "Paul")
-(george "George")
-(ddronen_title "SD-N")
-(ddronev_title "SD-V")
-(miku_title "Miku")
-(teto_title "Teto")
-(john_title "John")
-(ringo_title "Ringo")
-(paul_title "Paul")
-(george_title "George")
-(grim "Grim Ripper")
-(grim_title "Grim Ripper")
-(femsinger "Female Singer")
-(femsinger_title "Female Singer")
+;Custom Character Name
 (helicopter "Helicopter")
 (helicopter_title "Helicopter")
-(freddy "Freddy")
-(freddy_title "Freddy")
-(heavy "Heavy")
-(heavy_title "Heavy")
-(sniper "Sniper")
-(sniper_title "Sniper")
-(doll "Doll")
-(doll_tile "Doll")
-(cyn "Cyn")
-(cyn_title "Cyn")
-(walter "Walter")
-(walter_title "Walter")
 
 ;crews
 (bd_dancers "Skeletons")
@@ -340,8 +295,7 @@
 
 
 ;song sources
-(dlc "Downloaded Content")
-(dlc_title "Downloaded Content")
+(DLC "Downloaded Content")
 
 ;Dance Central games
 (ham1_viper "Dance Central Spotlight DLC (Legacy)")

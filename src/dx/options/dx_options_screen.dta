@@ -28,16 +28,17 @@
       {dx_options_panel_provider.hnp append_nav_item}
       {dx_options_panel_provider.hnp append_nav_item}
       {dx_options_panel_provider.hnp append_nav_item}
-      {dx_options_panel_provider.hnp append_nav_item}
-      {dx_options_panel_provider.hnp append_nav_item}
-      {dx_options_panel_provider.hnp set_label 0 "Autoplay"}
-      {dx_options_panel_provider.hnp set_label 1 "Buffer Display / Preview"}
-	  {dx_options_panel_provider.hnp set_label 2 "Toggle Post Processing"}
-	  {dx_options_panel_provider.hnp set_label 3 "Unlock All Content"}
-      {dx_options_panel_provider.hnp set_label 4 "Info / About"}
+      ;{dx_options_panel_provider.hnp append_nav_item}
+      ;{dx_options_panel_provider.hnp append_nav_item}
+	  
+      {dx_options_panel_provider.hnp set_label 0 definitive_modifiers}
+	  {dx_options_panel_provider.hnp set_label 1 definitive_postprocs_toggle}
+	  {dx_options_panel_provider.hnp set_label 2 definitive_info}
+	  
       ; {dx_options_panel_provider.hnp set_label 2 "Pack Friends Token"}
       ; {dx_options_panel_provider.hnp set_label 3 "Show Friends Token"}
-      ; {dx_options_panel_provider.hnp set_label 4 "Info / About"}
+      ; {dx_options_panel_provider.hnp set_label 4 definitive_info}
+	  
       {right_hand.hnl set_provider dx_options_panel_provider.hnp}
       {right_hand.hnl scroll_to_index [focus_index] [top_index]}
    )
@@ -49,12 +50,10 @@
    (poll SLIDE_RIGHT_LIST_ITEM)
    (NAV_SELECT_MSG
       {switch $name
-         ("Autoplay"
-            {ui goto_screen dx_autoplay_screen}
+         (definitive_modifiers
+            {ui goto_screen dx_modifiers_screen}
          )
-         ("Buffer Display / Preview"
-            {ui goto_screen dx_buffer_display_screen}
-         )
+		 
          ; ("Pack Friends Token"
          ;    {do
          ;       ($profile {profile_mgr get_active_profile})
@@ -99,13 +98,11 @@
          ;       }
          ;    }
          ; )
-         ("Toggle Post Processing"
+		 
+		 (definitive_postprocs_toggle
             {rnd toggle_all_postprocs}
          )
-		 ("Unlock All Content"
-            {ui goto_screen unlock_all_screen}
-         )
-		 ("Info / About"
+         (definitive_info
             {ui goto_screen dx_info_screen}
          )
       }
