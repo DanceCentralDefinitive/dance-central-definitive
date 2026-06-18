@@ -28,16 +28,10 @@
       {dx_options_panel_provider.hnp append_nav_item}
       {dx_options_panel_provider.hnp append_nav_item}
       {dx_options_panel_provider.hnp append_nav_item}
-      ;{dx_options_panel_provider.hnp append_nav_item}
-      ;{dx_options_panel_provider.hnp append_nav_item}
 	  
       {dx_options_panel_provider.hnp set_label 0 definitive_modifiers}
-	  {dx_options_panel_provider.hnp set_label 1 definitive_postprocs_toggle}
-	  {dx_options_panel_provider.hnp set_label 2 definitive_info}
-	  
-      ; {dx_options_panel_provider.hnp set_label 2 "Pack Friends Token"}
-      ; {dx_options_panel_provider.hnp set_label 3 "Show Friends Token"}
-      ; {dx_options_panel_provider.hnp set_label 4 definitive_info}
+	   {dx_options_panel_provider.hnp set_label 1 definitive_postprocs_toggle}
+	   {dx_options_panel_provider.hnp set_label 2 definitive_info}
 	  
       {right_hand.hnl set_provider dx_options_panel_provider.hnp}
       {right_hand.hnl scroll_to_index [focus_index] [top_index]}
@@ -54,54 +48,10 @@
             {ui goto_screen dx_modifiers_screen}
          )
 		 
-         ; ("Pack Friends Token"
-         ;    {do
-         ;       ($profile {profile_mgr get_active_profile})
-         ;       {print $profile}
-         ;       {if $profile
-         ;          {do
-         ;             ($slot 0)
-         ;             ($value 1337)
-         ;             ($packed {'+' $value {'*' 1000000 $slot}})
-         ;             {$profile set_upload_friends_token $packed}
-         ;             {cheat_display show
-         ;                {sprintf
-         ;                   "Saved SLOT %i -> VALUE %i (packed=%i)"
-         ;                   $slot
-         ;                   $value
-         ;                   $packed
-         ;                }
-         ;             }
-         ;          }
-         ;          {cheat_display show "No active profile"}
-         ;       }
-         ;    }
-         ; )
-         ; ("Show Friends Token"
-         ;    {do
-         ;       ($profile {profile_mgr get_active_profile})
-         ;       {if $profile
-         ;          {do
-         ;             ($packed {$profile get_upload_friends_token})
-         ;             ($slot {int {/ $packed 1000000}})
-         ;             ($value {mod $packed 1000000})
-         ;             {cheat_display show
-         ;                {sprintf
-         ;                   "SLOT %i -> VALUE %i (packed=%i)"
-         ;                   $slot
-         ;                   $value
-         ;                   $packed
-         ;                }
-         ;             }
-         ;          }
-         ;          {cheat_display show "No active profile"}
-         ;       }
-         ;    }
-         ; )
-		 
-		 (definitive_postprocs_toggle
+		   (definitive_postprocs_toggle
             {rnd toggle_all_postprocs}
          )
+
          (definitive_info
             {ui goto_screen dx_info_screen}
          )
