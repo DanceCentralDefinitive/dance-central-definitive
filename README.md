@@ -1,12 +1,11 @@
 # Dance Central Definitive
 
-Dance Central Definitive is a patch/mod workspace for Dance Central 3 content, packaging, and testing.
+[![Discord Server](https://dcbadge.limes.pink/api/server/https://discord.gg/Bj94CECgcK)](https://discord.gg/Bj94CECgcK)
 
+Dance Central Definitive is a patch/mod workspace for Dance Central 3 content, packaging, and testing.
 The repository contains source game data (`src/`), build tooling (`tools/build.py`), helper scripts (`scripts/`), and docs (`docs/`).
 
-**You can read the docs [here!](https://dancecentraldefinitive.github.io/dance-central-definitive/)**
-
-*You can find instructions and such there!*
+**📖 [Read the full docs](https://dancecentraldefinitive.github.io/dance-central-definitive/)**
 
 ## What this project does
 
@@ -90,25 +89,43 @@ mkdocs serve
 
 Then open the local URL shown by MkDocs.
 
+## Contributing
+
+Thanks for your interest in contributing! Please read our guidelines before submitting.
+
+**Quick links:**
+
+- **[CONTRIBUTING.md](CONTRIBUTING.md)** — full guidelines, development workflow, and **AI disclosure policy**
+- **[CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)** — community standards and enforcement
+- **[SUPPORT.md](SUPPORT.md)** — get help, find resources, report issues
+
+### Key expectations
+
+1. Keep each PR focused on one problem.
+2. Avoid unrelated cleanup in the same change.
+3. Preserve project scope: this repo is for mod tooling and patch content, not redistribution of proprietary game assets.
+4. **If you use AI tools** (GitHub Copilot, ChatGPT, Claude, etc.), disclose it in your PR and verify every change. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+5. Update docs if behavior changes.
+
+### How we handle contributions
+
+- Honest contributions with verified code are welcome.
+- Vibe coding, hallucinated explanations, or dishonest AI disclosure will result in **immediate PR rejection and permanent blacklist**.
+- See [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for our integrity policy.
+
 ## License and legal notice
 
 Original code and original project-authored content in this repository are licensed under the MIT License (see `LICENSE`).
 
-Important scope limits:
+**Important scope limits:**
 
 - Stock/original game assets, data, binaries, names, and other proprietary IP remain the property of their respective rights holders, including Harmonix Music Systems and Epic Games.
 - This repository does not grant rights to proprietary game content.
 - The project is a non-commercial fan/preservation initiative.
 - No copyright infringement is intended.
 
-## Contributing
-
-1. Create a branch for your change.
-2. Keep edits scoped and verify builds still pass.
-3. Update docs when behavior changes.
-4. Submit a PR with clear testing notes.
-
-By contributing, you agree that your original contributions are licensed under the MIT License in this repository, unless explicitly stated otherwise.
+**Contribution integrity:**
+By submitting a contribution, you affirm that you have the right to license it under MIT, that any AI use has been disclosed and verified, and that the code is not hallucinated or unverified. See `LICENSE` for details.
 
 ## Credits
 

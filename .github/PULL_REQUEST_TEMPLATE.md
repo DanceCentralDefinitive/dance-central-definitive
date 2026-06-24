@@ -42,6 +42,35 @@ List the exact commands you ran and the result.
 
 If no docs update is needed, explain why:
 
+## AI Disclosure
+
+**This section is mandatory. Choose one:**
+
+- [ ] **No AI assistance used** — This work was written, tested, and reviewed entirely by me without AI tools (GitHub Copilot, ChatGPT, Claude, etc.).
+
+- [ ] **AI assistance used with full author accountability** — I used AI tools (specify: _______________) for parts of this PR, **but I have**:
+  - [ ] Personally reviewed every change for correctness
+  - [ ] Tested all modified code paths thoroughly
+  - [ ] Verified no hallucinations or unintended behavior was introduced
+  - [ ] Can explain the purpose and mechanics of every change to maintainers
+  - [ ] Validated that generated code follows project conventions and standards
+
+**If you cannot honestly check all boxes above, do not submit this PR.**
+
+---
+
+### ⚠️ Integrity Policy
+
+**Vibe coding, hallucinated explanations, unverified AI output, or dishonest disclosure will result in:**
+
+- Immediate non-negotiable PR rejection
+- Permanent blacklist from this project and affiliated projects
+- Notification to collaborating groups and sister projects
+
+The standard is straightforward: **own your work**. If AI helped, say so—but only if you've genuinely verified and understood every line. Anything less is a breach of trust and wastes maintainer time.
+
+---
+
 ## Risks and follow-ups
 
 - Known risks:
@@ -53,3 +82,5 @@ If no docs update is needed, explain why:
 - [ ] No unrelated refactors were included
 - [ ] New files and paths follow project conventions
 - [ ] I have reviewed the diff before requesting review
+- [ ] I have completed the **AI Disclosure** section above with honest assessment
+- [ ] I understand the integrity policy and agree to it
