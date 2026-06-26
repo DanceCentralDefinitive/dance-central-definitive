@@ -1,0 +1,51 @@
+#define DX_GAMEDATA_ROOT
+(
+   #ifdef HX_XBOX "game:/" #endif
+)
+
+#define DX_PREFERENCES_FILE_PATH
+(
+   {sprint DX_GAMEDATA_ROOT "definitive_preferences.dta"}
+)
+
+#define DX_PREFERENCES_TEMPLATE
+(
+    (
+        (dx_version 1)
+        (global_prefs (
+            (test_option 0)
+        ))
+        (player_prefs ())
+    )
+)
+
+{set $dx_preferences ()}
+
+; Initial loading
+{do
+    {set $dx_preferences {read_file DX_PREFERENCES_FILE_PATH}}
+    {if {== $dx_preferences 0}
+        {set $dx_preferences
+            DX_PREFERENCES_TEMPLATE
+        }
+        {write_file DX_PREFERENCES_FILE_PATH $dx_preferences}
+    }
+    {set $dx_global_prefs {elem {find $dx_preferences global_prefs} 1}}
+}
+
+
+{func dx_get_pref
+    ($key)
+    {elem {find $dx_global_prefs $key} 1}
+}
+
+
+{func dx_set_pref
+    ($key $value)
+    {do
+        {set_elem {find $dx_global_prefs $key} 1 $value}
+        {write_file DX_PREFERENCES_FILE_PATH $dx_preferences}
+    }
+}
+
+{dx_set_pref test_option 1}
