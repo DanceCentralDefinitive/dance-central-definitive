@@ -5,6 +5,7 @@
 #include ./buffer_display/buffer_display_init.dta
 #include ./modifiers_screen/modifiers_init.dta
 #include ./pause_skele_loss/pause_skele_loss_init.dta
+#include ./preferences/preferences_init.dta
 
 ; The main screen goes last
 #include ./dx_options_screen.dta

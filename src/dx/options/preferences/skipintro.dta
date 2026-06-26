@@ -1,0 +1,114 @@
+
+{set $_dx_preferences_skipintro_label_skip "The game will automatically skip intro on next launch."}
+{set $_dx_preferences_skipintro_label_show "The game will now show intro on next launch."}
+{set $_dx_tmp_preferences_skipintro_label_current $_dx_preferences_skipintro_label_show}
+
+{new HamScreen
+   dx_preferences_skipintro_confirm_screen
+   (panels meta background_confirmation_panel dialog_panel)
+   (focus dialog_panel)
+   (enter {dialog_panel set_ok $_dx_tmp_preferences_skipintro_label_current FALSE})
+   (NAV_SELECT_MSG {ui goto_screen dx_preferences_skipintro_screen})
+}
+
+{new OptionsPanel
+   dx_preferences_skipintro_panel
+   (file "../../../ui/options/options.milo")
+   (focus right_hand.hnl)
+   (focus_index 0)
+   (pending_show_keyboard FALSE)
+   (pending_purchase_offer FALSE)
+   (offer_string "")
+   (top_index 0)
+   (back_token back)
+   (back_screen dx_preferences_list_screen)
+   (enter
+      {platform_mgr add_sink $this (ui_changed)}
+      {set [pending_show_keyboard] FALSE}
+      {set [pending_purchase_offer] FALSE}
+      {set [offer_string] ""}
+      {if {! {$this exists dx_preferences_skipintro_panel_provider.hnp}}
+         {new HamNavProvider dx_preferences_skipintro_panel_provider.hnp}
+      }
+      
+      {dx_preferences_skipintro_panel_provider.hnp append_nav_item}
+      {dx_preferences_skipintro_panel_provider.hnp append_nav_item}
+      
+      {dx_preferences_skipintro_panel_provider.hnp set_label 0 dx_preferences_skipintro_panel_show}
+      {dx_preferences_skipintro_panel_provider.hnp set_label 1 dx_preferences_skipintro_panel_skip}
+
+      {right_hand.hnl set_provider dx_preferences_skipintro_panel_provider.hnp}
+      {right_hand.hnl scroll_to_index [focus_index] [top_index]}
+   )
+   (exit
+      {platform_mgr remove_sink $this ui_changed}
+      {set [top_index] {right_hand.hnl get_top_index}}
+   )
+   SELECT_RIGHT_LIST_TOKEN
+   (poll SLIDE_RIGHT_LIST_ITEM)
+   (NAV_SELECT_MSG
+      {switch $name
+         (dx_preferences_skipintro_panel_show
+            {dx_set_pref skip_intro FALSE}
+            {set $_dx_tmp_preferences_skipintro_label_current $_dx_preferences_skipintro_label_show}
+            {ui goto_screen dx_preferences_skipintro_confirm_screen}
+         )
+         (dx_preferences_skipintro_panel_skip
+            {dx_set_pref skip_intro TRUE}
+            {set $_dx_tmp_preferences_skipintro_label_current $_dx_preferences_skipintro_label_skip}
+            {ui goto_screen dx_preferences_skipintro_confirm_screen}
+         )
+      }
+   )
+   (NAV_HIGHLIGHT_MSG
+      {switch $component
+         (right_hand.hnl {set [focus_index] $index})
+      }
+   )
+   (BUTTON_DOWN_MSG
+      {switch $action
+         (
+            (kAction_Cancel)
+            {$this on_back}
+         )
+         kDataUnhandled
+      }
+   )
+   (on_back
+      {saveload_mgr autosave}
+      {ui goto_screen [back_screen]}
+   )
+   (controller_req_op_complete
+      ($success)
+      {if {== $success TRUE}
+         {shell_input set_last_select_in_controller_mode TRUE}
+         {if_else {platform_mgr is_guide_showing}
+            {set [pending_show_keyboard] TRUE}
+            {$this show_keyboard}
+         }
+      }
+   )
+}
+
+{new HamScreen
+   dx_preferences_skipintro_screen
+   (panels meta background_panel dx_preferences_skipintro_panel)
+   (focus dx_preferences_skipintro_panel)
+   (back dx_preferences_list_screen)
+   (handle_global_commands TRUE)
+   (enter {voice_input_panel activate_voice_context dx_preferences_list_screen})
+   (on_voice_command
+      ($command)
+      {switch $command
+         BACRO
+         {dx_preferences_skipintro_panel select_right_list_token $command}
+      }
+   )
+   (on_global_voice_command
+      ($command)
+      {switch $command
+         (hidden_global_options)
+         {on_global_voice_command $command}
+      }
+   )
+}

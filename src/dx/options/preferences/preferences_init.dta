@@ -1,0 +1,5 @@
+#include ./skipintro.dta
+#include ./menumusic.dta
+#include ./preferences_list.dta
+
+{print "[dx-init]: options/preferences: screens created"}

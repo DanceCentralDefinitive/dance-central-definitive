@@ -19,6 +19,14 @@
 (definitive_postprocs_toggle "Toggle Post-Processing Effects")
 (definitive_unlockall "Unlock All Content")
 (definitive_bufferdisplaytoggle "Buffer Display / Preview")
+(definitive_preferences "Preferences")
+(dx_preferences_list_panel_menumusic "Menu Music")
+(dx_preferences_list_panel_skipintro "Skip Intro")
+(dx_preferences_menumusic_panel_dc3 "Dance Central 3 (Time Is On Our Side)")
+(dx_preferences_menumusic_panel_dc2 "Dance Central 2 (Turbo)")
+(dx_preferences_menumusic_panel_dc1 "Dance Central 1")
+(dx_preferences_skipintro_panel_show "Show intro on launch")
+(dx_preferences_skipintro_panel_skip "Skip intro on launch")
 
 	;Buffer Display toggle settings
 	(def_p1 "Toggle P1 Display")

@@ -2,6 +2,24 @@
 
 #include ../utils/dx_preferences.dta
 
+; Set menu music
+
+{set $dx_menumusic_dc3 "sfx/samples/shell/shellmusic_loop_03"}
+{set $dx_menumusic_dc2 "sfx/samples/shell/shellmusic_loop_02"}
+{set $dx_menumusic_dc1 "sfx/samples/shell/shellmusic_loop_01"}
+
+{set $dx_menumusic_current $dx_menumusic_dc3}
+
+{switch {dx_get_pref menu_music}
+    (1 {set $dx_menumusic_current $dx_menumusic_dc1})
+    (2 {set $dx_menumusic_current $dx_menumusic_dc2})
+    (3 {set $dx_menumusic_current $dx_menumusic_dc3})
+}
+
+{set_elem {find $syscfg synth metamusic song name} 1 $dx_menumusic_current}
+
+{print {sprint "[dx-init]: menu music set to: " $dx_menumusic_current}}
+
 ; Motion Blur
 #define DX_NO_MENU_MOTIONBLUR
 (

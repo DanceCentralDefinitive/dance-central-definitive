@@ -187,6 +187,11 @@
    (panels attract_movie_panel movie_overlay_panel)
    (focus movie_overlay_panel)
    (next_screen autosave_warning_screen)
+   (enter {do
+      {if {== {dx_get_pref skip_intro} TRUE}
+         {ui goto_screen title_screen}
+      }
+   })
    (skip_selected {ui goto_screen autosave_warning_screen})
 }
 {new HamScreen

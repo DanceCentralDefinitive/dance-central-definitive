@@ -13,7 +13,8 @@
     (
         (dx_version 1)
         (global_prefs (
-            (test_option 0)
+            (menu_music 3)
+            (skip_intro FALSE)
         ))
         (player_prefs ())
     )
@@ -47,5 +48,3 @@
         {write_file DX_PREFERENCES_FILE_PATH $dx_preferences}
     }
 }
-
-{dx_set_pref test_option 1}
