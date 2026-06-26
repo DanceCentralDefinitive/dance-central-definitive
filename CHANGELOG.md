@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here.
 
+## [v0.0.6] - 2026-06-27
+
+### Added
+
+- Preferences options including:
+  - changing menu music (Dance Central 1, 2 or 3)
+  - ability to skip intro and auto-save warning ("flimflam" is still played)
+- Added DC2 styled ribbon
+
 ## [v0.0.5] - 2026-05-16
 
 ### Fixed
@@ -27,7 +36,6 @@ All notable changes to this project are documented here.
 - Xenia patch is now static and works for all versions
 - Improved and simplified the build process
 - Improved CI/CD and automatic code verification
-
 
 ### Fixed
 
