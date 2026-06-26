@@ -1,10 +1,9 @@
 # format:
-# <function name> <min args> <max_args>
+# <function name> <min args> <max args>
 #
 # multiple symbols in the function name are supported. example:
 #
 # beatmatch whatever 1 1
-
 # vanilla control flow
 cond 1 999999
 foreach 3 999999
@@ -16,4 +15,215 @@ switch 2 999999
 unless 2 999999
 while 2 999999
 
-# TODO: add more vanilla functions and our dx_ functions
+# arithmetic and math
++ 1 999999
++= 2 2
+- 1 2
+-= 2 2
+* 1 999999
+*= 2 2
+/ 2 2
+/= 2 2
+abs 1 1
+add 1 999999
+add_eq 2 2
+clamp 3 3
+clamp_eq 2 2
+ceil 1 1
+dist 6 6
+floor 1 1
+mean 2 999999
+max 2 999999
+min 2 999999
+mod 2 2
+pow 2 2
+round 1 1
+sqrt 1 1
+sub 1 2
+sub_eq 2 2
+
+# bitwise operations
+& 2 999999
+&= 2 2
+| 2 999999
+|= 2 2
+^ 2 2
+~ 1 1
+bit_and 2 999999
+bit_or 2 999999
+bit_xor 2 2
+bit_not 1 1
+count_bits 1 1
+lowest_bit 1 1
+mask_eq 2 2
+
+# logical operations
+! 1 1
+&& 1 999999
+|| 1 999999
+^^ 2 2
+
+# comparison
+== 2 2
+!= 2 2
+< 2 2
+<= 2 2
+> 2 2
+>= 2 2
+
+# type conversion and inspection
+asc 1 1
+char 1 1
+int 1 1
+object 1 1
+symbol 1 1
+type 1 1
+
+# string operations
+db_to_ratio 1 1
+find_substr 2 2
+has_any_substr 2 2
+has_substr 2 2
+localize 1 1
+localize_float 2 2
+localize_separated_int 1 1
+ratio_to_db 1 1
+search_replace 4 4
+str_elem 2 2
+strcat 2 999999
+strlen 1 1
+strieq 2 2
+substr 3 3
+tolower 1 1
+toupper 1 1
+
+# string flags
+string_flags 2 2
+startswith 2 3
+
+# output and debugging
+assert 2 999999
+fail 1 999999
+notify 1 999999
+notify_once 1 999999
+print 1 999999
+print_array 1 1
+print_stack 0 0
+print_unused 1 1
+printf 1 999999
+sprint 1 999999
+sprintf 1 999999
+time 1 999999
+warn 1 999999
+
+# array operations
+array 1 1
+array_to_string 1 2
+elem 2 2
+find_elem 2 3
+flatten 1 999999
+insert_elem 3 3
+insert_elems 3 3
+last_elem 1 1
+push_back 2 2
+remove_elem 2 2
+resize 2 2
+set_elem 3 3
+size 1 1
+sort 1 1
+
+# data structures
+do 2 999999
+eval 1 1
+quote 1 1
+quasiquote 1 1
+unquote 1 1
+var 1 1
+set_var 2 2
+
+# object/property management
+delete 1 1
+exists 1 1
+export 2 2
+find 2 999999
+find_exists 2 999999
+find_obj 1 999999
+handle 1 999999
+handle_ret 1 1
+handle_type 1 999999
+handle_type_ret 1 1
+new 1 3
+replace_object 2 5
+set_this 1 1
+with 2 2
+
+# directory/file operations
+basename 1 1
+dirname 1 1
+file_exists 1 1
+file_list 1 3
+file_list_paths 1 1
+file_mkdir 1 1
+file_read_only 1 1
+read_file 1 1
+run 1 1
+write_file 2 2
+write_string_to_file 2 3
+
+# random operations
+random 2 999999
+random_elem 1 1
+random_float 0 2
+random_int 2 2
+random_seed 1 1
+random_sort 1 1
+
+# locale operations
+sync_reload_locale 0 0
+
+# interpolation
+interp 3 3
+reverse_interp 3 3
+
+# increment/decrement
+++ 1 1
+-- 1 1
+
+# color operations
+pack_color 3 3
+unpack_color 4 4
+
+# macro operations
+macro_elem 1 2
+macro_size 1 1
+
+# merge operations
+merge_dirs 4 4
+
+# list operations
+object_list 2 3
+next_name 1 2
+contains 2 2
+
+# utility/advanced
+disable_notify 1 999999
+filter_notify 3 999999
+func 1 1
+memory_alloc_report 1 1
+memory_usage_report 1 2
+
+# date/time
+get_date_time 0 6
+
+# Internal/obfuscated functions (key deriv dta)
+O64 2 999999
+O65 1 1
+O66 2 999999
+O67 2 2
+O68 2 999999
+O69 2 2
+O70 1 1
+
+# dx functions
+dx_get_pref 1 1
+dx_get_plr_pref 2 2
