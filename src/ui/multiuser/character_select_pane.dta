@@ -3,7 +3,7 @@
    (next_pane '')
    (back_pane '')
    (enter
-      DX_NO_MENU_MOTIONBLUR ($side)
+      ($side) DX_NO_MENU_MOTIONBLUR
       {multiuser_panel set_provider
          $side
          {multiuser_panel get_char_provider $side}
@@ -102,7 +102,7 @@
 {new Object
    outfit_select_pane
    (enter
-      DX_NO_MENU_MOTIONBLUR ($side)
+      ($side) DX_NO_MENU_MOTIONBLUR
       {multiuser_panel set_list_dir $side list_asset}
       {multiuser_panel set_provider
          $side

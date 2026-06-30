@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import argparse
+from datetime import datetime, timezone
 import os
 from pathlib import Path
 import sys
@@ -188,17 +189,7 @@ def inject_versions_into_obj_src(obj_src_root: Path, tag: str, commit: str):
     dx_ver_path = obj_src_root.joinpath("dx", "dx_version.dta")
     if dx_ver_path.exists():
         try:
-            build_time = (
-                subprocess.check_output(
-                    [
-                        sys.executable,
-                        "-c",
-                        "from datetime import datetime; print(datetime.utcnow().replace(microsecond=0).isoformat() + 'Z')",
-                    ]
-                )
-                .strip()
-                .decode()
-            )
+            build_time = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
         except Exception:
             build_time = ""
 
