@@ -2,6 +2,13 @@
 
 All notable changes to this project are documented here.
 
+## [v0.0.7] - 2026-06-29
+
+### Fixed
+
+- Fixed a bug when the game crashed on entering character selection panel on debug version.
+- Minor building fixes.
+
 ## [v0.0.6] - 2026-06-27
 
 ### Added
