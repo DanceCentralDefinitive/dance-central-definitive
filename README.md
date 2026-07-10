@@ -41,7 +41,7 @@ Use the Python tool directly for all options:
 Common options:
 
 - `--debug`: include debug variants.
-- `--vanilla`: include vanilla variants in addition to deluxe.
+- `--vanilla`: include vanilla variants in addition to definitive.
 - `--includes <dir>`: copy extra files into the output tree.
 - `--output <dir>`: change output directory (default: `out`).
 - `--clean`: remove generated caches after a successful build.

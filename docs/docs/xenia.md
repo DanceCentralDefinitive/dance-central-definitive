@@ -1,5 +1,8 @@
 # Xenia Integration
 
+**WARNING**: Currently only debug versions work with Xenia (vanilla and definitive).
+Last tested on: `canary_experimental@6e5b8324f`
+
 ## What is supported
 
 The build tool can:
@@ -15,9 +18,9 @@ The build tool can:
 Run selector values:
 
 - `0` = disabled
-- `1` = `deluxe.xex`
+- `1` = `definitive.xex`
 - `2` = `vanilla.xex`
-- `3` = `deluxe_debug.xex`
+- `3` = `definitive_debug.xex`
 - `4` = `vanilla_debug.xex`
 
 ## Example

@@ -1,13 +1,13 @@
 title_name = "Dance Central 3"
 title_id = "373307D9"
 hash = [
-    "81ADFC2E72E55454",  # deluxe_debug.xex
-    "A9FAAA8E4E739E19",  # vanilla_debug.xex
+    "81ADFC2E72E55454",  # definitive_debug.xex
+    "8D7A4A25A9EB6634",  # vanilla_debug.xex,
 ]
 
 [[patch]]
-    name = "Dance Central 3 Deluxe Xenia Debug Patch - V1"
-    desc = "Allows to run Dance Central 3 Deluxe on Xenia by patching Kinect and other related checks on Debug versions."
+    name = "Dance Central 3 definitive Xenia Debug Patch - V1"
+    desc = "Allows to run Dance Central 3 definitive on Xenia by patching Kinect and other related checks on Debug versions."
     author = "NORXND, glitchgod"
     is_enabled = true
 

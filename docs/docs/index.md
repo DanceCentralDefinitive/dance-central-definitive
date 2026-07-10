@@ -18,7 +18,7 @@ The project is centered around converting and packaging game data from `src/` in
 
 The build system supports:
 
-- multiple XEX variants (deluxe/vanilla, retail/debug),
+- multiple XEX variants (definitive/vanilla, retail/debug),
 - platform-specific tool binaries (Linux/macOS/Windows),
 - optional include overlays,
 - optional Xenia patch generation and launch.

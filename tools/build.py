@@ -31,18 +31,18 @@ XEX_INFO = {
         "retail": "vanilla.xex",
         "debug": "vanilla_debug.xex",
     },
-    "deluxe": {"retail": "deluxe.xex", "debug": "deluxe_debug.xex"},
+    "definitive": {"retail": "definitive.xex", "debug": "definitive_debug.xex"},
 }
 
 # Version map
 VERSION_MAP = {
     "vanilla": ("vanilla", "retail"),
     "vanilla_debug": ("vanilla", "debug"),
-    "deluxe": ("deluxe", "retail"),
-    "deluxe_debug": ("deluxe", "debug"),
-    0: ("deluxe", "retail"),
+    "definitive": ("definitive", "retail"),
+    "definitive_debug": ("definitive", "debug"),
+    0: ("definitive", "retail"),
     1: ("vanilla", "retail"),
-    2: ("deluxe", "debug"),
+    2: ("definitive", "debug"),
     3: ("vanilla", "debug"),
 }
 
@@ -50,9 +50,9 @@ VERSION_MAP = {
 
 XENIA_RUN_MAP = {
     0: None,
-    1: ("deluxe.xex"),
+    1: ("definitive.xex"),
     2: ("vanilla.xex"),
-    3: ("deluxe_debug.xex"),
+    3: ("definitive_debug.xex"),
     4: ("vanilla_debug.xex"),
 }
 
@@ -532,12 +532,12 @@ def run_build(config):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Dance Central 3 Deluxe Build Tool")
+    parser = argparse.ArgumentParser(description="Dance Central 3 definitive Build Tool")
 
     parser.add_argument(
         "source",
         type=Path,
-        help="Path to deluxe source directory (default: src)",
+        help="Path to definitive source directory (default: src)",
         default=Path("src"),
     )
     parser.add_argument(
@@ -600,7 +600,7 @@ def main():
         type=int,
         choices=range(5),
         default=0,
-        help="Game to run with Xenia: 0=None (Default), 1=Deluxe, 2=Vanilla, 3=Deluxe Debug, 4=Vanilla Debug",
+        help="Game to run with Xenia: 0=None (Default), 1=definitive, 2=Vanilla, 3=definitive Debug, 4=Vanilla Debug",
     )
     xenia_group.add_argument(
         "--xenia-args",
@@ -619,10 +619,10 @@ def main():
         if args.debug:
             versions_to_build.append("vanilla_debug")
 
-    # Always include deluxe (at least one version needed)
-    versions_to_build.append("deluxe")
+    # Always include definitive (at least one version needed)
+    versions_to_build.append("definitive")
     if args.debug:
-        versions_to_build.append("deluxe_debug")
+        versions_to_build.append("definitive_debug")
 
     # Check if Xenia location exist
     if args.xenia_path:

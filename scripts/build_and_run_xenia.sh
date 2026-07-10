@@ -11,11 +11,11 @@ if scripts/build.sh --debug --clean && rsync -a out/ xenia/game/; then
   case "$OSTYPE" in
     linux*)
       echo "Linux detected. Launching Xenia AppImage..."
-      ./xenia/xenia.AppImage ./xenia/game/deluxe_debug.xex --debug
+      ./xenia/xenia.AppImage ./xenia/game/definitive_debug.xex --debug
       ;;
     msys*|cygwin*|mingw*)
       echo "Windows detected. Launching Xenia EXE..."
-      ./xenia/xenia.exe ./xenia/game/deluxe_debug.xex --debug
+      ./xenia/xenia.exe ./xenia/game/definitive_debug.xex --debug
       ;;
     *)
       echo "Unsupported OS: $OSTYPE"

@@ -28,7 +28,7 @@ Platform-specific tools are selected from:
 
 ## Build variants
 
-By default, the build includes `deluxe` retail.
+By default, the build includes `definitive` retail.
 
 Flags add more variants:
 

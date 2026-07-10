@@ -29,7 +29,7 @@ jobs:
           SHORT_COMMIT_HASH="$(git rev-parse --short HEAD)"
           printf '"Build: Definitive %s (commit: %s base: 121004)"\n' "$GITHUB_REF_NAME" "$SHORT_COMMIT_HASH" > src/config/ham_version.dta
 
-      - name: Build deluxe non-debug patch files
+      - name: Build definitive non-debug patch files
         run: scripts/build.sh --clean --xenia-root xenia --allow-dtacheck-errors
 
       - name: Extract release notes from changelog
@@ -59,7 +59,7 @@ jobs:
         run: |
           test -f out/gen/patch_xbox.hdr
           test -f out/gen/patch_xbox_0.ark
-          test -f out/deluxe.xex
+          test -f out/definitive.xex
           PATCH_NAME="373307D9 - Dance Central 3.patch.toml"
           test -f "xenia/patches/$PATCH_NAME"
 
@@ -68,7 +68,7 @@ jobs:
           mkdir -p "$PACKAGE_DIR/gen"
           mkdir -p "$PACKAGE_DIR/xenia/patches"
 
-          cp out/deluxe.xex "$PACKAGE_DIR/definitive.xex"
+          cp out/definitive.xex "$PACKAGE_DIR/definitive.xex"
           cp out/gen/patch_xbox.hdr "$PACKAGE_DIR/gen/patch_xbox.hdr"
           cp out/gen/patch_xbox_0.ark "$PACKAGE_DIR/gen/patch_xbox_0.ark"
           cp "xenia/patches/$PATCH_NAME" "$PACKAGE_DIR/xenia/patches/$PATCH_NAME"
