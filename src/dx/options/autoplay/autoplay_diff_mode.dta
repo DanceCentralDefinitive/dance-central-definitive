@@ -11,6 +11,7 @@
    (back_screen dx_autoplay_screen)
    (dx_target_player 0)
    (enter
+      DX_NO_MENU_MOTIONBLUR
       {platform_mgr add_sink $this (ui_changed)}
       {set [pending_show_keyboard] FALSE}
       {set [pending_purchase_offer] FALSE}

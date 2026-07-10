@@ -18,6 +18,7 @@
    (back_token back)
    (back_screen dx_preferences_list_screen)
    (enter
+      DX_NO_MENU_MOTIONBLUR
       {platform_mgr add_sink $this (ui_changed)}
       {set [pending_show_keyboard] FALSE}
       {set [pending_purchase_offer] FALSE}
