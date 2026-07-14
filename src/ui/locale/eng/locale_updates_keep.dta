@@ -4,13 +4,13 @@
    "Dance")
 ;locale
 (legal
- "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nBase Modifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @noqenji on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems. \nContributions by The W (LiningDesert753) & NORXND. More info in Definitive Options")
+ "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nBase Modifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @aubmilia on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems. \nContributions by The W (LiningDesert753) & NORXND. More info in Definitive Options")
 (legal_e3
- "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nModifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @noqenji on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems.")
+ "Dance Central 3 Definitive © 2012 Harmonix Music Systems. \nModifications © 2023 MiloHax.  Modifications © 2026 DC Definitive @aubmilia on youtube. \nOriginal game code © 2012 Harmonix Music Systems, Inc.  Developed by Harmonix Music Systems.")
  
  ;Definitive Settings locale
 (get_songs_placeholder "Downloading songs from Dance Central Definitive is not yet available.")
-(definitive_credits "Dance Central 3 Definitive - Main Repository: https://github.com/DanceCentralDefinitive/dance-central-definitive - Docs: https://dancecentraldefinitive.github.io/dance-central-definitive/ - Authors: noqenji, liningdesert753, NORXND, Special Thanks to MiloHax & the DCD Discord Server")
+(definitive_credits "Dance Central 3 Definitive - Main Repository: https://github.com/DanceCentralDefinitive/dance-central-definitive - Docs: https://dancecentraldefinitive.github.io/dance-central-definitive/ - Authors: aubmilia, liningdesert753, NORXND, Special Thanks to MiloHax & the DCD Discord Server")
 
 (definitive_modifiers "Gameplay Modifiers")
 (definitive_pause_skele_loss "Spectator Settings")
