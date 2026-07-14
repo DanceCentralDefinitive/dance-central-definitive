@@ -129,7 +129,7 @@ By submitting a contribution, you affirm that you have the right to license it u
 
 ## Credits
 
-- noqenji
+- aubmilia
 - liningdesert753
 - NORXND
 - MiloHax community contributors
