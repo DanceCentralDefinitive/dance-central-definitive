@@ -8,7 +8,7 @@
    (offer_string "")
    (top_index 0)
    (back_token back)
-   (back_screen dx_options_screen)
+   (back_screen dx_modifiers_screen)
    (enter
       DX_NO_MENU_MOTIONBLUR
       {platform_mgr add_sink $this (ui_changed)}
