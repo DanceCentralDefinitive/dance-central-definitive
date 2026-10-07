@@ -35,12 +35,15 @@
 
       {dx_main_menu_provider.hnp append_nav_item}
       {dx_main_menu_provider.hnp set_label 1 campaign_mode}
+	  
+	  {dx_main_menu_provider.hnp append_nav_item}
+      {dx_main_menu_provider.hnp set_label 2 challenges}
 
       {dx_main_menu_provider.hnp append_nav_item}
-      {dx_main_menu_provider.hnp set_label 2 fitness_mode}
+      {dx_main_menu_provider.hnp set_label 3 fitness_mode}
 
       {dx_main_menu_provider.hnp append_nav_item}
-      {dx_main_menu_provider.hnp set_label 3 "Download More Songs"}
+      {dx_main_menu_provider.hnp set_label 4 "Download More Songs"}
 
       {$this update_main_menu_provider dx_main_menu_provider.hnp}
       {right_hand.hnl set_provider {$this get_main_menu_provider}}
@@ -63,6 +66,30 @@
          (gameplay
             {gamemode set_mode init}
             {ui goto_screen choose_mode_screen}
+         )
+		 (challenges
+            {if_else {profile_mgr has_active_profile}
+               {do
+                  ($profile {profile_mgr get_active_profile})
+                  
+                     {if_else {! {profile_mgr has_seen_tutorial kTutorialChallengeMode}}
+                        {enter_tutorial tutorial_challenge_mode_screen_0 FALSE}
+                        {if_else {rock_central is_online}
+                           {if_else {challenges can_download_player_challenges}
+                              {ui goto_screen downloading_player_challenge_screen}
+                              {ui goto_screen challenge_feed_screen}
+                           }
+                           {do
+                              {downloading_player_challenge_screen set wait_until_rc_online TRUE}
+                              {ui goto_screen downloading_player_challenge_screen}
+                           }
+                        }
+                     }
+
+                  
+               }
+               {ui goto_screen challenges_need_to_sign_in_screen}
+            }
          )
          (campaign_mode
             {hamprovider set is_in_infinite_party_mode FALSE}
