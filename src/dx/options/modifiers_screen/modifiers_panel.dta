@@ -25,8 +25,8 @@
 	  
       {dx_modifiers_panel_provider.hnp set_label 0 definitive_autoplay}
       {dx_modifiers_panel_provider.hnp set_label 1 definitive_bufferdisplaytoggle}
-	  {dx_modifiers_panel_provider.hnp set_label 2 definitive_unlockall}
-      {dx_modifiers_panel_provider.hnp set_label 3 definitive_pause_skele_loss}
+      {dx_modifiers_panel_provider.hnp set_label 2 definitive_pause_skele_loss}
+	  {dx_modifiers_panel_provider.hnp set_label 3 definitive_cheats}
       {right_hand.hnl set_provider dx_modifiers_panel_provider.hnp}
       {right_hand.hnl scroll_to_index [focus_index] [top_index]}
    )
@@ -47,11 +47,11 @@
          (definitive_postprocs_toggle
             {rnd toggle_all_postprocs}
          )
-		 (definitive_unlockall
-            {ui goto_screen unlock_all_screen}
-         )
 		 (definitive_pause_skele_loss
             {ui goto_screen dx_pause_skele_loss_screen}
+         )
+		 (definitive_cheats
+            {ui goto_screen def_cheat_screen}
          )
       }
    )

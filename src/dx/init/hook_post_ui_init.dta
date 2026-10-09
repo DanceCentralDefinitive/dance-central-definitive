@@ -2,6 +2,9 @@
 
 ; Add content to initialize below.
 #include ../options/dx_options_init.dta
-#include ../download_songs/download_songs_placeholder.dta
+#include ../cheats/definitive_cheats_main.dta
+
+;"cheat" screens
+#include ../cheats/inf_money.dta
 
 ; {set $notify_level 0}

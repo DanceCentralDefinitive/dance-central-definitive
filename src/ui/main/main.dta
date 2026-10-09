@@ -42,9 +42,6 @@
       {dx_main_menu_provider.hnp append_nav_item}
       {dx_main_menu_provider.hnp set_label 3 fitness_mode}
 
-      {dx_main_menu_provider.hnp append_nav_item}
-      {dx_main_menu_provider.hnp set_label 4 "Download More Songs"}
-
       {$this update_main_menu_provider dx_main_menu_provider.hnp}
       {right_hand.hnl set_provider {$this get_main_menu_provider}}
       {hamprovider set is_in_shell_pause FALSE}
@@ -102,12 +99,19 @@
                {ui goto_screen fitness_screen}
             }
          )
-         ("Download More Songs"
-            {ui goto_screen dx_download_songs_placeholder_screen}
-         )
-         (options {ui goto_screen options_screen})
-         (screen_name_title {ui go_back_screen {{ui current_screen} get back}})
-         (back {ui go_back_screen {{ui current_screen} get back}})
+        (options
+			{ui goto_screen options_screen}
+		)
+        (screen_name_title 
+			{ui go_back_screen 
+				{{ui current_screen} get back}
+			}
+		)
+        (back
+			{ui go_back_screen 
+				{{ui current_screen} get back}
+			}
+		)
       }
    )
    (motd_loaded

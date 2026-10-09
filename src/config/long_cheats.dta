@@ -1,0 +1,24 @@
+#define CHEATS_ALLOWED (
+   {&&
+      {exists ui}
+      {! {ui in_transition}}
+      {== {ui current_screen} def_cheat_screen}
+   }
+)
+
+(
+	;infinite money (does nothing)
+	(
+		kPad_DUp
+		kPad_DUp
+		kPad_DDown
+		kPad_DDown
+		kPad_DLeft
+		kPad_DRight
+		kPad_DLeft
+		kPad_DRight
+   )
+   {if CHEATS_ALLOWED
+      {ui goto_screen inf_money_screen}
+   }
+)
