@@ -294,15 +294,11 @@
 (mansion_title "Tan's Estate")
 (forest_title "Midnight Mayhem")
 
-;Non-Functional DC1 Venue Names
-(powerstation "(Broken)")
-(highschool "(Broken)")
-(powerstation_title "(Broken)")
-(highschool_title "(Broken)")
-;(powerstation "City Limits")
-;(highschool "5th Period")
-;(powerstation_title "City Limits")
-;(highschool_title "5th Period")
+;Questionable DC1 Venue Names
+(powerstation "City Limits")
+(highschool "5th Period")
+(powerstation_title "City Limits")
+(highschool_title "5th Period")
 
 
 ;song sources
