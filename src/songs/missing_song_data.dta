@@ -5822,7 +5822,7 @@
    (author "Harmonix")
    #endif)
 (toxic
-   (name "Toxic)
+   (name "Toxic")
    (format 3)
    (pronunciation_loc
       (deu
